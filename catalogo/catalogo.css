@@ -3,14 +3,14 @@
 /* ═══════════════════════════════════════════════════════════════════ */
 
 .catalogo-header {
-  padding: 120px 2rem 60px;
+  padding: 190px 2rem 60px;
   background: linear-gradient(
     135deg,
     rgba(109, 159, 127, 0.15) 0%,
     rgba(10, 10, 10, 0.95) 100%
   );
   border-bottom: 1px solid rgba(109, 159, 127, 0.2);
-  margin-top: 100px;
+  margin-top: 0;
 }
 
 .catalogo-header-content {
@@ -922,6 +922,13 @@
   gap: 1rem;
 }
 
+.nexcore-link {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
 .footer-socials a {
   width: 45px;
   height: 45px;
@@ -1092,5 +1099,13 @@
   .pagination-btn {
     padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
+  }
+}
+
+/* Media Queries - Tablet y Móvil */
+@media (max-width: 768px) {
+  .catalogo-header {
+    padding: 150px 2rem 60px;
+    margin-top: 0;
   }
 }
