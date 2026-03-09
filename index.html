@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premier Sur - Indumentaria Deportiva</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/Logos/Premier Sur - Logo.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <img
+            src="assets/Logos/Premier Sur - Logo.png"
+            alt="Premier Sur Logo"
+            class="logo-img"
+          />
+          <div class="logo-text">
+            <h1>Premier Sur</h1>
+            <p>INDUMENTARIA DEPORTIVA</p>
+          </div>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#como-funciona">Cómo Funciona</a></li>
+          <li><a href="#talles">Talles</a></li>
+          <li><a href="#preguntas">Preguntas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <button class="btn-primary">Pedir Cotización</button>
+        <button class="menu-hamburguesa" id="menuHamburguesa">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <!-- Menú móvil -->
+      <ul class="nav-links-mobile" id="navLinksMobile">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#como-funciona">Cómo Funciona</a></li>
+        <li><a href="#talles">Talles</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#" class="btn-primary-mobile">Pedir Cotización</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+      <div id="vanta-waves"></div>
+      <img
+        src="assets/Imagenes/Mockup 3.png"
+        alt="Jugador posando con uniforme deportivo"
+        class="hero-player-bg"
+      />
+      <img
+        src="assets/Imagenes/Mockup Mujer 2.png"
+        alt="Jugador posando con uniforme deportivo"
+        class="hero-player-bg-right"
+      />
+      <div class="hero-content">
+        <h2 class="hero-title">
+          <span class="accent">VISTE</span> A TU EQUIPO <br />
+          COMO PROFESIONALES
+        </h2>
+
+        <p class="hero-description">
+          Diseñamos y fabricamos camisetas, shorts y uniformes deportivos
+          personalizados para equipos de fútbol, voley, básquet y más. Tu
+          diseño, nuestra calidad.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="catalogo/index.html" class="btn-secondary"
+            >Ver Catálogo <span>→</span></a
+          >
+          <button class="btn-whatsapp">Contactar por WhatsApp</button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <h3>500+</h3>
+            <p>Equipos vestidos</p>
+          </div>
+          <div class="stat">
+            <h3>100%</h3>
+            <p>Personalizable</p>
+          </div>
+          <div class="stat">
+            <h3>15+</h3>
+            <p>Deportes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nuestros Diseños Section -->
+    <section class="designs" id="productos">
+      <div class="designs-container">
+        <div class="designs-header">
+          <h2 class="designs-title">
+            <span class="accent">NUESTROS</span> DISEÑOS
+          </h2>
+          <div class="designs-footer">
+            <p class="designs-description">
+              Explora nuestra galería de trabajos realizados. Cada diseño es
+              único y personalizado para cada equipo.
+            </p>
+            <!-- Filtros -->
+            <div class="filters">
+              <button class="filter-btn active" data-filter="todos">
+                Todos
+              </button>
+              <button class="filter-btn" data-filter="futbol">Fútbol</button>
+              <button class="filter-btn" data-filter="voley">Voley</button>
+              <button class="filter-btn" data-filter="basquet">Básquet</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carrusel de Productos -->
+        <div class="carousel-container">
+          <div class="carousel">
+            <!-- Producto 1 -->
+            <div class="product-card" data-category="futbol">
+              <div class="product-image">
+                <img
+                  src="assets/Productos/584405139_18020913800787778_7229598298872701147_n.webp"
+                  alt="Conjunto Fútbol Azul/Naranja"
+                />
+              </div>
+              <div class="product-info">
+                <span class="product-category">Fútbol</span>
+                <h3 class="product-title">Conjunto Fútbol Azul/Naranja</h3>
+                <p class="product-description">
+                  Diseño dinámico con detalles en naranja
+                </p>
+              </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product-card" data-category="futbol">
+              <div class="product-image">
+                <img
+                  src="assets/Productos/584622330_18020913872787778_2984332393380680425_n.webp"
+                  alt="Conjunto Azul Marino"
+                />
+              </div>
+              <div class="product-info">
+                <span class="product-category">Fútbol</span>
+                <h3 class="product-title">Conjunto Azul Marino</h3>
+                <p class="product-description">
+                  Estilo clásico con estrellas doradas
+                </p>
+              </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product-card" data-category="voley">
+              <div class="product-image">
+                <img
+                  src="assets/Productos/587605614_18020913896787778_8287935366397675098_n.webp"
+                  alt="Conjunto Voley Griego"
+                />
+              </div>
+              <div class="product-info">
+                <span class="product-category">Voley</span>
+                <h3 class="product-title">Conjunto Griego Azul/Amarillo</h3>
+                <p class="product-description">
+                  Diseño con patrón griego distintivo
+                </p>
+              </div>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="product-card" data-category="futbol">
+              <div class="product-image">
+                <img
+                  src="assets/Productos/583894400_18020913605787778_8086942876133700660_n.webp"
+                  alt="Conjunto Fútbol"
+                />
+              </div>
+              <div class="product-info">
+                <span class="product-category">Fútbol</span>
+                <h3 class="product-title">Conjunto Fútbol Personalizado</h3>
+                <p class="product-description">
+                  Diseño exclusivo con detalles especiales
+                </p>
+              </div>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="product-card" data-category="basquet">
+              <div class="product-image">
+                <img
+                  src="assets/Productos/583984630_18020913410787778_1029991910318949219_n.webp"
+                  alt="Uniforme Básquet"
+                />
+              </div>
+              <div class="product-info">
+                <span class="product-category">Básquet</span>
+                <h3 class="product-title">Uniforme Básquet Moderno</h3>
+                <p class="product-description">
+                  Corte ergonómico de alto rendimiento
+                </p>
+              </div>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="product-card" data-category="voley">
+              <div class="product-image">
+                <img
+                  src="assets/Productos/584323780_18020913770787778_8447651840960342685_n.webp"
+                  alt="Conjunto Voley"
+                />
+              </div>
+              <div class="product-info">
+                <span class="product-category">Voley</span>
+                <h3 class="product-title">Conjunto Voley Premium</h3>
+                <p class="product-description">
+                  Tela transpirable y resistente
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botones de Catálogo y Diseño -->
+        <div class="products-buttons">
+          <a href="/catalogo/" class="btn-catalog">
+            <i class="bi bi-book"></i>
+            Ver Catálogo Completo
+          </a>
+          <button class="btn-design">
+            <i class="bi bi-pencil-square"></i>
+            Envíanos tu Diseño
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner Animado -->
+    <div class="banner-animado">
+      <div class="banner-contenido">
+        <span class="banner-texto">CERTIFICADOS</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">PRODUCTOS DE CALIDAD</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">LA MEJOR TELA</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">DISEÑOS PERSONALIZADOS</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">CONJUNTOS DEPORTIVOS</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">ENTREGA RÁPIDA</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">ENVÍOS AL PAÍS</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">CERTIFICADOS</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">PRODUCTOS DE CALIDAD</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">LA MEJOR TELA</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">DISEÑOS PERSONALIZADOS</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">CONJUNTOS DEPORTIVOS</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">ENTREGA RÁPIDA</span>
+        <span class="banner-separador">◆</span>
+        <span class="banner-texto">ENVÍOS AL PAÍS</span>
+        <span class="banner-separador">◆</span>
+      </div>
+    </div>
+
+    <!-- Cómo Funciona Section -->
+    <section class="como-funciona" id="como-funciona">
+      <div class="como-funciona-container">
+        <h2 class="como-funciona-title">
+          <span class="accent">CÓMO</span> FUNCIONA
+        </h2>
+        <p class="como-funciona-subtitle">
+          En tan solo 4 simples pasos, tu equipo estará listo para salir a la
+          cancha con la mejor indumentaria, combinando comodidad, estilo y
+          calidad. Prepararse nunca fue tan fácil: seguí el proceso, personalizá
+          los detalles y en poco tiempo tendrán todo listo para jugar y
+          representar al equipo como se merece.
+        </p>
+
+        <!-- Los 4 pasos -->
+        <div class="pasos-container">
+          <!-- Paso 1 -->
+          <div class="paso">
+            <div class="paso-numero">01</div>
+            <div class="paso-icon">
+              <i class="bi bi-chat-left-text"></i>
+            </div>
+            <h3 class="paso-titulo">CONTACTANOS</h3>
+            <p class="paso-descripcion">
+              Escribinos por WhatsApp o completá el formulario con los detalles
+              de tu equipo y lo que necesitas.
+            </p>
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="paso">
+            <div class="paso-numero">02</div>
+            <div class="paso-icon">
+              <i class="bi bi-palette"></i>
+            </div>
+            <h3 class="paso-titulo">ELEGÍ O DISEÑA</h3>
+            <p class="paso-descripcion">
+              Elegi un diseño de nuestro catálogo o envianos tu idea. Nosotros
+              te llevaremos a la realidad.
+            </p>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="paso">
+            <div class="paso-numero">03</div>
+            <div class="paso-icon">
+              <i class="bi bi-check-circle"></i>
+            </div>
+            <h3 class="paso-titulo">APROBÁ EL DISEÑO</h3>
+            <p class="paso-descripcion">
+              Te enviamos la propuesta de diseño para que la apruebes o hagamos
+              los ajustes necesarios.
+            </p>
+          </div>
+
+          <!-- Paso 4 -->
+          <div class="paso">
+            <div class="paso-numero">04</div>
+            <div class="paso-icon">
+              <i class="bi bi-truck"></i>
+            </div>
+            <h3 class="paso-titulo">RECIBÍ TU PEDIDO</h3>
+            <p class="paso-descripcion">
+              Fabricamos tu pedido con los mejores materiales y te lo enviamos o
+              lo retiras en nuestro local.
+            </p>
+          </div>
+        </div>
+
+        <!-- Información adicional -->
+        <div class="info-adicional">
+          <div class="info-card">
+            <h3 class="info-title">7-14 DÍAS</h3>
+            <p class="info-text">Tiempo de entrega promedio</p>
+          </div>
+          <div class="info-card">
+            <h3 class="info-title">DESDE 10 UNIDADES</h3>
+            <p class="info-text">Pedido mínimo</p>
+          </div>
+          <div class="info-card">
+            <h3 class="info-title">ENVÍOS</h3>
+            <p class="info-text">A todo el país</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabla de Talles Section -->
+    <section class="talles" id="talles">
+      <div class="talles-container">
+        <div class="talles-header">
+          <div class="talles-header-left">
+            <p class="talles-label">MEDIDAS</p>
+            <h2 class="talles-title">
+              TABLA DE <span class="accent">TALLES</span>
+            </h2>
+            <p class="talles-subtitle">
+              Conjuntos deportivos unisex - Medidas en centímetros
+            </p>
+          </div>
+
+          <!-- Pestañas de Prenda -->
+          <div class="talles-tabs">
+            <button class="talles-tab active" data-tab="camiseta">
+              CAMISETA
+            </button>
+            <button class="talles-tab" data-tab="short">SHORT</button>
+          </div>
+        </div>
+
+        <!-- Contenedor de Camiseta -->
+        <div class="talles-content active" id="tab-camiseta">
+          <!-- Niños / Juvenil -->
+          <div class="talles-section">
+            <h3 class="talles-section-title">NIÑOS / JUVENIL</h3>
+            <div class="talles-grid">
+              <div class="talle-card">
+                <span class="talle-size">2</span>
+                <div class="talle-measures">
+                  <p>A: 32cm</p>
+                  <p>L: 42cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">4</span>
+                <div class="talle-measures">
+                  <p>A: 34cm</p>
+                  <p>L: 46cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">6</span>
+                <div class="talle-measures">
+                  <p>A: 36cm</p>
+                  <p>L: 50cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">8</span>
+                <div class="talle-measures">
+                  <p>A: 38cm</p>
+                  <p>L: 54cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">10</span>
+                <div class="talle-measures">
+                  <p>A: 40cm</p>
+                  <p>L: 58cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">12</span>
+                <div class="talle-measures">
+                  <p>A: 42cm</p>
+                  <p>L: 62cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">14</span>
+                <div class="talle-measures">
+                  <p>A: 44cm</p>
+                  <p>L: 66cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">16</span>
+                <div class="talle-measures">
+                  <p>A: 46cm</p>
+                  <p>L: 70cm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Adultos -->
+          <div class="talles-section">
+            <h3 class="talles-section-title">ADULTOS</h3>
+            <div class="talles-grid">
+              <div class="talle-card">
+                <span class="talle-size">S</span>
+                <div class="talle-measures">
+                  <p>A: 45cm</p>
+                  <p>L: 68cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">M</span>
+                <div class="talle-measures">
+                  <p>A: 50cm</p>
+                  <p>L: 70cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">L</span>
+                <div class="talle-measures">
+                  <p>A: 54cm</p>
+                  <p>L: 72cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">XL</span>
+                <div class="talle-measures">
+                  <p>A: 58cm</p>
+                  <p>L: 74cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">2XL</span>
+                <div class="talle-measures">
+                  <p>A: 62cm</p>
+                  <p>L: 76cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">3XL</span>
+                <div class="talle-measures">
+                  <p>A: 66cm</p>
+                  <p>L: 78cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">4XL</span>
+                <div class="talle-measures">
+                  <p>A: 70cm</p>
+                  <p>L: 80cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">5XL</span>
+                <div class="talle-measures">
+                  <p>A: 74cm</p>
+                  <p>L: 82cm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenedor de Short -->
+        <div class="talles-content" id="tab-short">
+          <!-- Niños / Juvenil -->
+          <div class="talles-section">
+            <h3 class="talles-section-title">NIÑOS / JUVENIL</h3>
+            <div class="talles-grid">
+              <div class="talle-card">
+                <span class="talle-size">2</span>
+                <div class="talle-measures">
+                  <p>A: 27cm</p>
+                  <p>L: 29cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">4</span>
+                <div class="talle-measures">
+                  <p>A: 28cm</p>
+                  <p>L: 32cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">6</span>
+                <div class="talle-measures">
+                  <p>A: 29cm</p>
+                  <p>L: 33cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">8</span>
+                <div class="talle-measures">
+                  <p>A: 30cm</p>
+                  <p>L: 35cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">10</span>
+                <div class="talle-measures">
+                  <p>A: 32cm</p>
+                  <p>L: 39cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">12</span>
+                <div class="talle-measures">
+                  <p>A: 33cm</p>
+                  <p>L: 40cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">14</span>
+                <div class="talle-measures">
+                  <p>A: 34cm</p>
+                  <p>L: 42cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">16</span>
+                <div class="talle-measures">
+                  <p>A: 35cm</p>
+                  <p>L: 44cm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Adultos -->
+          <div class="talles-section">
+            <h3 class="talles-section-title">ADULTOS</h3>
+            <div class="talles-grid">
+              <div class="talle-card">
+                <span class="talle-size">S</span>
+                <div class="talle-measures">
+                  <p>A: 36cm</p>
+                  <p>L: 47cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">M</span>
+                <div class="talle-measures">
+                  <p>A: 37cm</p>
+                  <p>L: 50cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">L</span>
+                <div class="talle-measures">
+                  <p>A: 39cm</p>
+                  <p>L: 52cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">XL</span>
+                <div class="talle-measures">
+                  <p>A: 41cm</p>
+                  <p>L: 55cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">2XL</span>
+                <div class="talle-measures">
+                  <p>A: 43cm</p>
+                  <p>L: 57cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">3XL</span>
+                <div class="talle-measures">
+                  <p>A: 45cm</p>
+                  <p>L: 60cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">4XL</span>
+                <div class="talle-measures">
+                  <p>A: 47cm</p>
+                  <p>L: 62cm</p>
+                </div>
+              </div>
+              <div class="talle-card">
+                <span class="talle-size">5XL</span>
+                <div class="talle-measures">
+                  <p>A: 49cm</p>
+                  <p>L: 65cm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón de Descarga -->
+        <div class="talles-download-btn-container">
+          <button id="downloadTallesBtn" class="btn-download-talles">
+            <i class="bi bi-download"></i> DESCARGAR TABLA DE TALLES
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cotización Section -->
+    <section class="cotizacion" id="cotizacion">
+      <div class="cotizacion-container">
+        <!-- Lado Izquierdo - Información de Contacto -->
+        <div class="cotizacion-left">
+          <h2 class="cotizacion-title">
+            PEDÍ TU<br /><span class="accent">COTIZACIÓN</span>
+          </h2>
+          <p class="cotizacion-description">
+            Completá el formulario y te contactamos para armar la mejor
+            propuesta para tu equipo. ¡Sin compromiso!
+          </p>
+
+          <!-- WhatsApp -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="bi bi-chat-left-dots"></i>
+            </div>
+            <div class="contact-content">
+              <h4>WhatsApp</h4>
+              <p>+54 9 11 1234-5678</p>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="bi bi-envelope"></i>
+            </div>
+            <div class="contact-content">
+              <h4>Email</h4>
+              <p>info@premiersur.com</p>
+            </div>
+          </div>
+
+          <!-- Ubicación -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="bi bi-geo-alt"></i>
+            </div>
+            <div class="contact-content">
+              <h4>Ubicación</h4>
+              <p>Buenos Aires, Argentina</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lado Derecho - Formulario -->
+        <div class="cotizacion-right">
+          <form class="cotizacion-form">
+            <!-- Nombre completo y Email en una fila -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" placeholder="Tu nombre" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="tu@email.com" />
+              </div>
+            </div>
+
+            <!-- Nombre del equipo y Deporte en una fila -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="equipo">Nombre del equipo</label>
+                <input type="text" id="equipo" placeholder="Club Atlético..." />
+              </div>
+              <div class="form-group">
+                <label for="deporte">Deporte</label>
+                <select id="deporte">
+                  <option value="">Seleccionar...</option>
+                  <option value="futbol">Fútbol</option>
+                  <option value="voley">Voley</option>
+                  <option value="basquet">Básquet</option>
+                  <option value="handball">Handball</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Cantidad aproximada de prendas -->
+            <div class="form-group">
+              <label for="cantidad">Cantidad aproximada de prendas</label>
+              <input
+                type="text"
+                id="cantidad"
+                placeholder="Ej: 15 camisetas + 15 shorts"
+              />
+            </div>
+
+            <!-- Mensaje (opcional) -->
+            <div class="form-group">
+              <label for="mensaje">Mensaje (opcional)</label>
+              <textarea
+                id="mensaje"
+                rows="4"
+                placeholder="Contanos más sobre lo que necesitás..."
+              ></textarea>
+            </div>
+
+            <!-- Botón Enviar -->
+            <button type="submit" class="btn-enviar">
+              Enviar Solicitud
+              <i class="bi bi-send"></i>
+            </button>
+
+            <!-- Texto de privacidad -->
+            <p class="form-disclaimer">
+              Al enviar, aceptas ser contactado por nuestro equipo comercial.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner CTA con Parallax -->
+    <section class="banner-cta" id="banner-cta">
+      <div class="banner-cta-parallax"></div>
+      <div class="banner-cta-content">
+        <div class="banner-cta-text">
+          <h2 class="banner-cta-title">
+            DISEÑA EL UNIFORME PEFECTO PARA TU EQUIPO
+          </h2>
+          <p class="banner-cta-subtitle">
+            Te ayudamos a crear equipaciones personalizadas con calidad y
+            estilo.
+          </p>
+        </div>
+        <button class="banner-cta-btn">Solicitar Cotización</button>
+      </div>
+      <div class="banner-cta-overlay"></div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section class="contacto" id="contacto">
+      <div class="contacto-container">
+        <h2 class="contacto-title">
+          <span class="accent">Contacta</span> con nosotros
+        </h2>
+        <p class="contacto-subtitle">
+          Estamos aquí para vos en Florencio Varela, siempre disponibles para
+          ayudarte con todas tus consultas y dudas. Nuestro equipo está listo
+          para brindarte la atención que necesitás, acompañarte en cada paso y
+          asegurarse de que tengas la mejor experiencia posible.
+        </p>
+
+        <!-- Tarjetas de Contacto -->
+        <div class="contacto-cards">
+          <!-- Dirección -->
+          <div class="contacto-card">
+            <div class="contacto-card-icon">
+              <i class="bi bi-geo-alt"></i>
+            </div>
+            <h3 class="contacto-card-title">DIRECCIÓN</h3>
+            <p class="contacto-card-text">
+              Av. Gral. José de San Martín 2395<br />B1888 Florencio Varela,
+              Provincia de Buenos Aires
+            </p>
+          </div>
+
+          <!-- Teléfono -->
+          <div class="contacto-card">
+            <div class="contacto-card-icon">
+              <i class="bi bi-telephone"></i>
+            </div>
+            <h3 class="contacto-card-title">TELÉFONO</h3>
+            <p class="contacto-card-text">
+              <strong>Ventas:</strong> +54 9 11 2456-7890<br />
+              <strong>Soporte:</strong> +54 9 11 3789-4561<br />
+              <strong>Consultas:</strong> +54 9 11 5123-6789
+            </p>
+          </div>
+
+          <!-- Redes -->
+          <div class="contacto-card">
+            <div class="contacto-card-icon">
+              <i class="bi bi-instagram"></i>
+            </div>
+            <h3 class="contacto-card-title">REDES</h3>
+            <p class="contacto-card-text">
+              <strong>Instagram:</strong> @premiersur.oficial<br />
+              <strong>Facebook:</strong> @PremierSurAR<br />
+              <strong>WhatsApp:</strong> Chateá con nosotros
+            </p>
+          </div>
+
+          <!-- Horarios -->
+          <div class="contacto-card">
+            <div class="contacto-card-icon">
+              <i class="bi bi-clock"></i>
+            </div>
+            <h3 class="contacto-card-title">HORARIOS</h3>
+            <p class="contacto-card-text">
+              Lunes a Viernes: 09:00 - 18:00hs<br />Sábados: 10:00 - 16:00hs
+            </p>
+          </div>
+        </div>
+
+        <!-- Mapa Interactivo -->
+        <div class="contacto-mapa-container">
+          <iframe
+            class="contacto-mapa"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.5524846282457!2d-58.26919!3d-34.743519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32e0e0e0e0e0d%3A0x0!2sAv.%20Gral.%20Jos%C3%A9%20de%20San%20Mart%C3%ADn%202395%2C%20B1888%20Florencio%20Varela!5e0!3m2!1ses!2sar!4v1234567890"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas Frecuentes Section - Dos Columnas -->
+    <section class="faq-section" id="preguntas">
+      <div class="faq-wrapper">
+        <!-- Columna Izquierda - Respuestas -->
+        <div class="faq-left">
+          <h2 class="faq-main-title">
+            <span class="accent">PREGUNTAS</span><br />FRECUENTES
+          </h2>
+          <p class="faq-subtitle">
+            Encuentra respuestas a las dudas más comunes
+          </p>
+
+          <div class="faq-answer-container">
+            <!-- Respuesta 1 -->
+            <div class="faq-answer-item active" data-index="0">
+              <h3 class="faq-answer-title">¿Cómo reservo una cotización?</h3>
+              <p class="faq-answer-text">
+                Podés contactarnos por WhatsApp, completar nuestro formulario en
+                línea o visitarnos en nuestro local en Florencio Varela. Nos
+                encargaremos de coordinar los detalles de tu pedido y
+                presentarte opciones personalizadas según las necesidades de tu
+                equipo.
+              </p>
+            </div>
+
+            <!-- Respuesta 2 -->
+            <div class="faq-answer-item" data-index="1">
+              <h3 class="faq-answer-title">¿Qué métodos de pago aceptan?</h3>
+              <p class="faq-answer-text">
+                Aceptamos transferencias bancarias, efectivo, tarjetas de
+                crédito y débito. Para pedidos grandes, podemos ofrecer opciones
+                de financiación especiales. Consultá con nuestro equipo
+                comercial sobre las mejores opciones para tu equipo.
+              </p>
+            </div>
+
+            <!-- Respuesta 3 -->
+            <div class="faq-answer-item" data-index="2">
+              <h3 class="faq-answer-title">
+                ¿Puedo cambiar o cancelar mi pedido?
+              </h3>
+              <p class="faq-answer-text">
+                Sí, los cambios y cancelaciones están permitidos dentro de los
+                primeros 7 días del pedido. Una vez que iniciamos la
+                fabricación, los cambios pueden estar sujetos a costos
+                adicionales. Contactanos cuanto antes si necesitas realizar
+                modificaciones.
+              </p>
+            </div>
+
+            <!-- Respuesta 4 -->
+            <div class="faq-answer-item" data-index="3">
+              <h3 class="faq-answer-title">
+                ¿Ofrecen diseños para categorías menores?
+              </h3>
+              <p class="faq-answer-text">
+                ¡Claro! Tenemos amplia experiencia vistiendo equipos infantiles
+                y juveniles de todos los deportes. Nos adaptamos a las medidas y
+                necesidades específicas de cada categoría, garantizando
+                comodidad, durabilidad y diseños que los motiven.
+              </p>
+            </div>
+
+            <!-- Respuesta 5 -->
+            <div class="faq-answer-item" data-index="4">
+              <h3 class="faq-answer-title">¿Cuánto tarda la fabricación?</h3>
+              <p class="faq-answer-text">
+                El tiempo promedio de fabricación es de 7 a 14 días. Este plazo
+                depende de la complejidad del diseño, la cantidad de prendas y
+                la disponibilidad actual. Ofrecemos plazos especiales y entrega
+                rápida para pedidos urgentes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha - Preguntas -->
+        <div class="faq-right">
+          <div class="faq-questions-list">
+            <button class="faq-question-btn active" data-index="0">
+              <span class="faq-number">01</span>
+              <span class="faq-text">¿Cómo reservo una cotización?</span>
+            </button>
+            <button class="faq-question-btn" data-index="1">
+              <span class="faq-number">02</span>
+              <span class="faq-text">¿Qué métodos de pago aceptan?</span>
+            </button>
+            <button class="faq-question-btn" data-index="2">
+              <span class="faq-number">03</span>
+              <span class="faq-text">¿Puedo cambiar o cancelar mi pedido?</span>
+            </button>
+            <button class="faq-question-btn" data-index="3">
+              <span class="faq-number">04</span>
+              <span class="faq-text"
+                >¿Ofrecen diseños para categorías menores?</span
+              >
+            </button>
+            <button class="faq-question-btn" data-index="4">
+              <span class="faq-number">05</span>
+              <span class="faq-text">¿Cuánto tarda la fabricación?</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Columna Izquierda - Logo y Redes -->
+        <div class="footer-column footer-brand">
+          <div class="footer-logo">
+            <img
+              src="assets/Logos/Premier Sur - Logo.png"
+              alt="Premier Sur Logo"
+              class="footer-logo-img"
+            />
+            <div>
+              <h3>Premier Sur</h3>
+              <p>INDUMENTARIA DEPORTIVA</p>
+            </div>
+          </div>
+          <p class="footer-description">
+            Fabricamos indumentaria deportiva personalizada para equipos de
+            todos los deportes. Calidad, diseño y compromiso en cada prenda.
+          </p>
+          <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener">
+              <i class="bi bi-facebook"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Columna Central - Enlaces -->
+        <div class="footer-column">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#como-funciona">Cómo Funciona</a></li>
+            <li><a href="#preguntas">Preguntas</a></li>
+            <li><a href="#cotizacion">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna Derecha - Deportes -->
+        <div class="footer-column">
+          <h4>Deportes</h4>
+          <ul>
+            <li><a href="#">Fútbol</a></li>
+            <li><a href="#">Voley</a></li>
+            <li><a href="#">Básquet</a></li>
+            <li><a href="#">Hockey</a></li>
+            <li><a href="#">Handball</a></li>
+            <li><a href="#">Y más...</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 Premier Sur. Todos los derechos reservados.</p>
+        <p>
+          Diseñado por
+          <a class="Nexcore-link" href="https://nexcore-gamma.vercel.app/"
+            >Nexcore</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <!-- Vanta.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script src="main.js"></script>
+
+    <!-- Descarga de Tabla de Talles -->
+    <script>
+      document
+        .getElementById("downloadTallesBtn")
+        .addEventListener("click", function () {
+          const link = document.createElement("a");
+          link.href = "assets/Imagenes/tabla de talles.png";
+          link.download = "tabla-talles-premier-sur.png";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+    </script>
+  </body>
+</html>
