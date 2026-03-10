@@ -234,6 +234,14 @@ function shuffleArray(array) {
   return shuffled;
 }
 
+function debounce(fn, delay = 180) {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), delay);
+  };
+}
+
 // ═══════════════════════════════════════════════════════════════════
 // ESTADO DEL CATÁLOGO
 // ═══════════════════════════════════════════════════════════════════
@@ -248,6 +256,7 @@ let catalogState = {
   currentPage: 1,
   itemsPerPage: 8
 };
+const randomizedProducts = shuffleArray(productsData);
 
 // ═══════════════════════════════════════════════════════════════════
 // INICIALIZACIÓN
@@ -267,10 +276,11 @@ function initializeCatalog() {
   // Búsqueda
   const searchInput = document.getElementById("searchInput");
   if (searchInput) {
-    searchInput.addEventListener("input", (e) => {
+    const onSearchInput = debounce((e) => {
       catalogState.searchQuery = e.target.value.toLowerCase();
       renderProducts();
     });
+    searchInput.addEventListener("input", onSearchInput);
   }
 
   // Cambio de vista
@@ -362,7 +372,7 @@ function clearAllFilters() {
 // ═══════════════════════════════════════════════════════════════════
 
 function getFilteredProducts() {
-  return productsData.filter((product) => {
+  return randomizedProducts.filter((product) => {
     // Filtro por deporte
     if (
       !catalogState.filters.sport.includes("todos") &&
@@ -407,9 +417,6 @@ function renderProducts(resetPage = true) {
   if (resetPage) {
     catalogState.currentPage = 1;
   }
-
-  // Desordenar productos
-  filtered = shuffleArray(filtered);
 
   // Actualizar contador
   const countElement = document.getElementById("productsCount");

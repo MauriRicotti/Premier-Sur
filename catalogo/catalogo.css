@@ -36,6 +36,12 @@ body.menu-open {
   overflow: hidden;
 }
 
+.catalogo-section,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
 /* Navbar */
 .navbar {
   background: linear-gradient(

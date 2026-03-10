@@ -2,21 +2,104 @@
 // FOG ANIMADO EN EL HERO SECTION
 // ═══════════════════════════════════════════════════════════════════
 
-window.addEventListener('load', () => {
-  VANTA.FOG({
-    el: '#vanta-waves',
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.0,
-    minWidth: 200.0,
-    highlightColor: 0x2d2d2d,
-    midtoneColor: 0x1a1a1a,
-    lowlightColor: 0x0a0a0a,
-    baseColor: 0x0a0a0a,
-    speed: 2.8,
+const shouldDisableHeavyEffects = () => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveDataEnabled = Boolean(navigator.connection && navigator.connection.saveData);
+  const lowCoreCpu = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4;
+  const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
+  const smallViewport = window.innerWidth < 900;
+
+  return prefersReducedMotion || saveDataEnabled || lowCoreCpu || lowMemory || smallViewport;
+};
+
+const loadExternalScript = (src) =>
+  new Promise((resolve, reject) => {
+    const existingScript = document.querySelector(`script[src="${src}"]`);
+    if (existingScript) {
+      if (existingScript.dataset.loaded === 'true') {
+        resolve();
+        return;
+      }
+      existingScript.addEventListener('load', () => resolve(), { once: true });
+      existingScript.addEventListener('error', () => reject(new Error(`No se pudo cargar ${src}`)), {
+        once: true,
+      });
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+    script.addEventListener(
+      'load',
+      () => {
+        script.dataset.loaded = 'true';
+        resolve();
+      },
+      { once: true },
+    );
+    script.addEventListener('error', () => reject(new Error(`No se pudo cargar ${src}`)), { once: true });
+    document.head.appendChild(script);
   });
-});
+
+const initHeroFog = () => {
+  const vantaContainer = document.getElementById('vanta-waves');
+  if (!vantaContainer || shouldDisableHeavyEffects()) return;
+
+  const startFog = async () => {
+    try {
+      await loadExternalScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js');
+      await loadExternalScript('https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js');
+      if (!window.VANTA || !window.VANTA.FOG) return;
+
+      window.VANTA.FOG({
+        el: '#vanta-waves',
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        highlightColor: 0x2d2d2d,
+        midtoneColor: 0x1a1a1a,
+        lowlightColor: 0x0a0a0a,
+        baseColor: 0x0a0a0a,
+        speed: 2.8,
+      });
+    } catch (error) {
+      console.warn(error);
+    }
+  };
+
+  const observer = new IntersectionObserver(
+    (entries, currentObserver) => {
+      if (!entries[0].isIntersecting) return;
+      startFog();
+      currentObserver.disconnect();
+    },
+    { rootMargin: '200px 0px' },
+  );
+
+  observer.observe(vantaContainer);
+};
+
+initHeroFog();
+
+const optimizeImageLoading = () => {
+  const images = document.querySelectorAll('img');
+  images.forEach((image, index) => {
+    if (!image.hasAttribute('decoding')) {
+      image.decoding = 'async';
+    }
+    if (index > 1 && !image.hasAttribute('loading')) {
+      image.loading = 'lazy';
+    }
+    if (index > 1 && !image.hasAttribute('fetchpriority')) {
+      image.setAttribute('fetchpriority', 'low');
+    }
+  });
+};
+
+optimizeImageLoading();
 
 // ═══════════════════════════════════════════════════════════════════
 // BANNER ANIMADO
@@ -36,7 +119,7 @@ if (bannerContenido) {
 (async () => {
   const particlesContainer = document.getElementById('particles-hero');
   
-  if (!particlesContainer) return;
+  if (!particlesContainer || typeof window.tsParticles === 'undefined') return;
 
   // Inicializar tsParticles
   await tsParticles.load('particles-hero', {

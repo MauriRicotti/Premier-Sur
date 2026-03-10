@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Premier Sur - Indumentaria Deportiva</title>
+    <link rel="preload" as="image" href="assets/Imagenes/Mockup 3.png" />
     <link rel="stylesheet" href="style.css" />
     <link
       rel="icon"
@@ -81,11 +82,14 @@
         src="assets/Imagenes/Mockup 3.png"
         alt="Jugador posando con uniforme deportivo"
         class="hero-player-bg"
+        fetchpriority="high"
+        decoding="async"
       />
       <img
         src="assets/Imagenes/Mockup Mujer 2.png"
         alt="Jugador posando con uniforme deportivo"
         class="hero-player-bg-right"
+        decoding="async"
       />
       <div class="hero-content">
         <h2 class="hero-title">
@@ -156,6 +160,8 @@
                 <img
                   src="assets/Productos/584405139_18020913800787778_7229598298872701147_n.webp"
                   alt="Conjunto Fútbol Azul/Naranja"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="product-info">
@@ -173,6 +179,8 @@
                 <img
                   src="assets/Productos/584622330_18020913872787778_2984332393380680425_n.webp"
                   alt="Conjunto Azul Marino"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="product-info">
@@ -190,6 +198,8 @@
                 <img
                   src="assets/Productos/587605614_18020913896787778_8287935366397675098_n.webp"
                   alt="Conjunto Voley Griego"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="product-info">
@@ -207,6 +217,8 @@
                 <img
                   src="assets/Productos/583894400_18020913605787778_8086942876133700660_n.webp"
                   alt="Conjunto Fútbol"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="product-info">
@@ -224,6 +236,8 @@
                 <img
                   src="assets/Productos/583984630_18020913410787778_1029991910318949219_n.webp"
                   alt="Uniforme Básquet"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="product-info">
@@ -241,6 +255,8 @@
                 <img
                   src="assets/Productos/584323780_18020913770787778_8447651840960342685_n.webp"
                   alt="Conjunto Voley"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="product-info">
@@ -395,6 +411,8 @@
         src="assets/Imagenes/Mockup 5.png"
         alt="Uniforme deportivo mujer"
         class="talles-player-bg-right"
+        loading="lazy"
+        decoding="async"
       />
       <div class="talles-container">
         <div class="talles-header">
@@ -684,6 +702,81 @@
       </div>
     </section>
 
+    <!-- Testimonios Section -->
+    <section class="testimonios" id="testimonios">
+      <div class="testimonios-container">
+        <div class="testimonios-header">
+          <p class="testimonios-label">COMUNIDAD PREMIER SUR</p>
+          <h2 class="testimonios-title">
+            <span class="accent">TESTIMONIOS</span> REALES
+          </h2>
+          <p class="testimonios-subtitle">
+            Equipos de todo el pais confian en nosotros para vestir cada
+            torneo, entrenamiento y final.
+          </p>
+        </div>
+
+        <div class="testimonios-grid">
+          <article class="testimonio-card">
+            <div class="testimonio-rating" aria-label="Calificacion 5 estrellas">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p class="testimonio-text">
+              "Nos entregaron los conjuntos justo antes del campeonato. La tela
+              es comoda, fresca y los colores quedaron identicos al diseno que
+              enviamos."
+            </p>
+            <div class="testimonio-author">
+              <h3 class="testimonio-name">Matias R.</h3>
+              <p class="testimonio-team">DT - Club Atletico Varela</p>
+            </div>
+          </article>
+
+          <article class="testimonio-card">
+            <div class="testimonio-rating" aria-label="Calificacion 5 estrellas">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p class="testimonio-text">
+              "Pedimos camisetas y shorts para toda la categoria infantil. Las
+              medidas salieron perfectas y el equipo de Premier Sur respondio
+              rapidisimo."
+            </p>
+            <div class="testimonio-author">
+              <h3 class="testimonio-name">Carolina M.</h3>
+              <p class="testimonio-team">Coordinadora - Escuela Union Voley</p>
+            </div>
+          </article>
+
+          <article class="testimonio-card">
+            <div class="testimonio-rating" aria-label="Calificacion 5 estrellas">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p class="testimonio-text">
+              "Excelente terminacion y muy buena atencion en todo el proceso.
+              Volvimos a pedir para la segunda tira porque los jugadores quedaron
+              encantados."
+            </p>
+            <div class="testimonio-author">
+              <h3 class="testimonio-name">Nicolas S.</h3>
+              <p class="testimonio-team">Capitan - Basquet Sur</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- Cotización Section -->
     <section class="cotizacion" id="cotizacion">
       <div class="cotizacion-container">
@@ -806,7 +899,7 @@
       <div class="banner-cta-content">
         <div class="banner-cta-text">
           <h2 class="banner-cta-title">
-            DISEÑA EL UNIFORME PEFECTO PARA TU EQUIPO
+            DISEÑA EL UNIFORME PERFECTO PARA TU EQUIPO
           </h2>
           <p class="banner-cta-subtitle">
             Te ayudamos a crear equipaciones personalizadas con calidad y
@@ -1013,6 +1106,8 @@
               src="assets/Logos/Premier Sur - Logo.png"
               alt="Premier Sur Logo"
               class="footer-logo-img"
+              loading="lazy"
+              decoding="async"
             />
             <div>
               <h3>Premier Sur</h3>
@@ -1128,10 +1223,7 @@
       <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Vanta.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
-    <script src="main.js"></script>
+    <script defer src="main.js"></script>
 
     <!-- Descarga de Tabla de Talles -->
     <script>
