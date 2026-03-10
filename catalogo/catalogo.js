@@ -231,6 +231,7 @@ function shuffleArray(array) {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
+  console.log("✅ shuffleArray completado, items:", shuffled.length);
   return shuffled;
 }
 
@@ -247,7 +248,6 @@ function debounce(fn, delay = 180) {
 // ═══════════════════════════════════════════════════════════════════
 
 let catalogState = {
-  viewMode: "grid",
   searchQuery: "",
   filters: {
     sport: ["todos"],
@@ -262,11 +262,27 @@ const randomizedProducts = shuffleArray(productsData);
 // INICIALIZACIÓN
 // ═══════════════════════════════════════════════════════════════════
 
-document.addEventListener("DOMContentLoaded", () => {
+console.log("📜 catalogo.js está cargando...");
+console.log("📦 Total de productos:", productsData.length);
+console.log("🔀 Productos aleatorizados:", randomizedProducts.length);
+
+const bootCatalog = () => {
+  console.log("🚀 bootCatalog() iniciando");
   initializeCatalog();
+  console.log("✅ initializeCatalog() completado");
   initializeMenuHamburguesa();
+  console.log("✅ initializeMenuHamburguesa() completado");
   renderProducts();
-});
+  console.log("✅ renderProducts() completado");
+};
+
+if (document.readyState === "loading") {
+  console.log("⏳ DOMContentLoaded aún no ha disparado");
+  document.addEventListener("DOMContentLoaded", bootCatalog);
+} else {
+  console.log("✔️ DOMContentLoaded ya pasó, ejecutando bootCatalog()");
+  bootCatalog();
+}
 
 // ═══════════════════════════════════════════════════════════════════
 // FUNCIONES PRINCIPALES
@@ -282,17 +298,6 @@ function initializeCatalog() {
     });
     searchInput.addEventListener("input", onSearchInput);
   }
-
-  // Cambio de vista
-  const viewBtns = document.querySelectorAll(".view-btn");
-  viewBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      viewBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      catalogState.viewMode = btn.dataset.view;
-      renderProducts();
-    });
-  });
 
   // Filtros por deporte (ELIMINADOS - Sidebar de filtros removido)
   // const sportCheckboxes = document.querySelectorAll('input[name="sport"]');
@@ -411,7 +416,13 @@ function renderProducts(resetPage = true) {
   const grid = document.getElementById("productsGrid");
   let filtered = getFilteredProducts();
 
-  if (!grid) return;
+  console.log("🎯 Iniciando renderProducts - Grid encontrado:", !!grid);
+  console.log("📦 Productos filtrados:", filtered.length);
+
+  if (!grid) {
+    console.error("❌ Grid no encontrado!");
+    return;
+  }
 
   // Reset a página 1 solo si los filtros cambiaron
   if (resetPage) {
@@ -427,12 +438,6 @@ function renderProducts(resetPage = true) {
 
   // Vaciar grid
   grid.innerHTML = "";
-
-  // Agregar clase de vista
-  grid.classList.remove("list-view");
-  if (catalogState.viewMode === "list") {
-    grid.classList.add("list-view");
-  }
 
   // Renderizar productos
   if (filtered.length === 0) {
@@ -456,6 +461,8 @@ function renderProducts(resetPage = true) {
     const card = createProductCard(product, index);
     grid.appendChild(card);
   });
+
+  console.log("✅ Productos renderizados:", paginatedProducts.length);
 
   // Renderizar paginación
   renderPagination(filtered);
@@ -649,6 +656,15 @@ function initializeMenuHamburguesa() {
 // Fallback inmediato por si DOMContentLoaded ya pasó en algunos entornos
 initializeMenuHamburguesa();
 
+// FALLBACK: Renderizar productos si no se han renderizado
+setTimeout(() => {
+  const grid = document.getElementById("productsGrid");
+  if (grid && grid.children.length === 0) {
+    console.warn("⚠️ Grid vacío, ejecutando renderProducts como fallback...");
+    renderProducts();
+  }
+}, 1000);
+
 // Botón flotante: volver arriba
 const catalogScrollTopBtn = document.getElementById("scrollTopBtn");
 if (catalogScrollTopBtn && catalogScrollTopBtn.dataset.bound !== "true") {
@@ -666,20 +682,3 @@ if (catalogScrollTopBtn && catalogScrollTopBtn.dataset.bound !== "true") {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
-
-// ═══════════════════════════════════════════════════════════════════
-// BARRA DE PROGRESO
-// ═══════════════════════════════════════════════════════════════════
-const initProgressBar = () => {
-  const progressBar = document.getElementById("progressBar");
-  if (!progressBar) return;
-
-  window.addEventListener("scroll", () => {
-    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = window.scrollY;
-    const scrollPercent = windowHeight > 0 ? (scrolled / windowHeight) * 100 : 0;
-    progressBar.style.width = scrollPercent + "%";
-  }, { passive: true });
-};
-
-initProgressBar();
