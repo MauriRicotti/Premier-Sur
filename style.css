@@ -1832,6 +1832,10 @@ section {
     padding: 4rem 1rem;
   }
 
+  .talles-player-bg-right {
+    display: none;
+  }
+
   .talles-header {
     flex-direction: column;
     gap: 2rem;
@@ -2974,7 +2978,7 @@ section {
 
 @media (max-width: 768px) {
   .banner-cta {
-    min-height: 420px;
+    min-height: 520px;
     margin: 1.5rem 0 0;
     padding: 3rem 1rem;
     background-attachment: scroll;

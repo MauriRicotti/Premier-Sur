@@ -7,9 +7,8 @@ const shouldDisableHeavyEffects = () => {
   const saveDataEnabled = Boolean(navigator.connection && navigator.connection.saveData);
   const lowCoreCpu = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4;
   const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
-  const smallViewport = window.innerWidth < 900;
 
-  return prefersReducedMotion || saveDataEnabled || lowCoreCpu || lowMemory || smallViewport;
+  return prefersReducedMotion || saveDataEnabled || lowCoreCpu || lowMemory;
 };
 
 const loadExternalScript = (src) =>
