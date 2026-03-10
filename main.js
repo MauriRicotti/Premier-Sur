@@ -209,7 +209,9 @@ if (bannerContenido) {
 const menuHamburguesa = document.getElementById('menuHamburguesa');
 const navLinksMobile = document.getElementById('navLinksMobile');
 
-if (menuHamburguesa && navLinksMobile) {
+if (menuHamburguesa && navLinksMobile && menuHamburguesa.dataset.menuBound !== 'true') {
+  menuHamburguesa.dataset.menuBound = 'true';
+
   const openMobileMenu = () => {
     menuHamburguesa.classList.add('active');
     menuHamburguesa.setAttribute('aria-expanded', 'true');
@@ -405,3 +407,4 @@ const initProgressBar = () => {
 };
 
 initProgressBar();
+
