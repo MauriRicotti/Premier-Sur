@@ -49,7 +49,14 @@
           <li><a href="#contacto">Contacto</a></li>
         </ul>
         <button class="btn-primary">Pedir Cotización</button>
-        <button class="menu-hamburguesa" id="menuHamburguesa">
+        <button
+          class="menu-hamburguesa"
+          id="menuHamburguesa"
+          type="button"
+          aria-label="Abrir menú de navegación"
+          aria-expanded="false"
+          aria-controls="navLinksMobile"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -384,6 +391,11 @@
 
     <!-- Tabla de Talles Section -->
     <section class="talles" id="talles">
+      <img
+        src="assets/Imagenes/Mockup 5.png"
+        alt="Uniforme deportivo mujer"
+        class="talles-player-bg-right"
+      />
       <div class="talles-container">
         <div class="talles-header">
           <div class="talles-header-left">
@@ -1012,11 +1024,29 @@
             todos los deportes. Calidad, diseño y compromiso en cada prenda.
           </p>
           <div class="footer-socials">
-            <a href="https://instagram.com" target="_blank" rel="noopener">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener"
+              title="Instagram"
+            >
               <i class="bi bi-instagram"></i>
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener"
+              title="Facebook"
+            >
               <i class="bi bi-facebook"></i>
+            </a>
+            <a
+              href="https://wa.me/549XXXXXXXXX"
+              target="_blank"
+              rel="noopener"
+              title="WhatsApp"
+            >
+              <i class="bi bi-whatsapp"></i>
             </a>
           </div>
         </div>
@@ -1033,17 +1063,40 @@
           </ul>
         </div>
 
-        <!-- Columna Derecha - Deportes -->
+        <!-- Columna Central-Derecha - Deportes -->
         <div class="footer-column">
           <h4>Deportes</h4>
           <ul>
-            <li><a href="#">Fútbol</a></li>
-            <li><a href="#">Voley</a></li>
-            <li><a href="#">Básquet</a></li>
-            <li><a href="#">Hockey</a></li>
-            <li><a href="#">Handball</a></li>
-            <li><a href="#">Y más...</a></li>
+            <li><a href="#productos">Fútbol</a></li>
+            <li><a href="#productos">Voley</a></li>
+            <li><a href="#productos">Básquet</a></li>
+            <li><a href="#productos">Hockey</a></li>
+            <li><a href="#productos">Handball</a></li>
+            <li><a href="#productos">Y más...</a></li>
           </ul>
+        </div>
+
+        <!-- Columna Derecha - Horarios -->
+        <div class="footer-column footer-hours">
+          <h4><i class="bi bi-clock"></i> Horarios</h4>
+          <div class="hours-list">
+            <div class="hour-item">
+              <span class="day">Lunes - Viernes:</span>
+              <span class="time">9:00 - 18:00</span>
+            </div>
+            <div class="hour-item">
+              <span class="day">Sábado:</span>
+              <span class="time">10:00 - 14:00</span>
+            </div>
+            <div class="hour-item">
+              <span class="day">Domingo:</span>
+              <span class="time">Cerrado</span>
+            </div>
+          </div>
+          <div class="contact-info">
+            <p><i class="bi bi-telephone"></i> +54 9 11 1234-5678</p>
+            <p><i class="bi bi-envelope"></i> info@premiersur.com</p>
+          </div>
         </div>
       </div>
 
@@ -1052,12 +1105,28 @@
         <p>&copy; 2026 Premier Sur. Todos los derechos reservados.</p>
         <p>
           Diseñado por
-          <a class="Nexcore-link" href="https://nexcore-gamma.vercel.app/"
-            >Nexcore</a
+          <a
+            class="nexcore-link"
+            href="https://nexcore-gamma.vercel.app/"
+            target="_blank"
+            rel="noopener"
+            title="Nexcore"
+          >
+            Nexcore</a
           >
         </p>
       </div>
     </footer>
+
+    <button
+      class="scroll-top-btn"
+      id="scrollTopBtn"
+      type="button"
+      aria-label="Volver arriba"
+      title="Volver arriba"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Vanta.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

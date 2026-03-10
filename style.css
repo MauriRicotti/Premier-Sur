@@ -32,6 +32,63 @@ body {
   overflow-x: hidden;
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
+.scroll-top-btn {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(109, 159, 127, 0.45);
+  border-radius: 999px;
+  background: rgba(12, 15, 14, 0.9);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0s linear 0.25s,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+  z-index: 1200;
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.scroll-top-btn:hover {
+  background: rgba(109, 159, 127, 0.9);
+  border-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .scroll-top-btn {
+    width: 44px;
+    height: 44px;
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -162,18 +219,32 @@ h6 {
 .menu-hamburguesa {
   display: none;
   flex-direction: column;
-  background-color: transparent;
-  border: none;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background-color: rgba(109, 159, 127, 0.1);
+  border: 1.5px solid rgba(109, 159, 127, 0.4);
+  border-radius: 8px;
   cursor: pointer;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  padding: 0;
+  z-index: 1002;
+  transition: all 0.3s ease;
+}
+
+.menu-hamburguesa:hover {
+  background-color: rgba(109, 159, 127, 0.15);
+  border-color: rgba(109, 159, 127, 0.6);
 }
 
 .menu-hamburguesa span {
-  width: 25px;
-  height: 3px;
+  width: 22px;
+  height: 2.5px;
   background-color: #fff;
   border-radius: 2px;
   transition: all 0.3s ease;
+  transform-origin: center;
 }
 
 .menu-hamburguesa.active span:nth-child(1) {
@@ -190,21 +261,42 @@ h6 {
 
 /* Menú Móvil */
 .nav-links-mobile {
-  display: none;
+  display: flex;
   list-style: none;
   flex-direction: column;
   gap: 0;
-  background-color: rgb(0, 0, 0);
-  padding: 1rem 0;
+  background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgb(22, 22, 22) 100%);
+  padding: 0.25rem 0;
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
+  border-radius: 0 0 16px 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.45);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0s linear 0.35s;
 }
 
 .nav-links-mobile.active {
-  display: flex;
+  max-height: 420px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .nav-links-mobile li {
@@ -225,16 +317,39 @@ h6 {
 }
 
 .btn-primary-mobile {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--accent-color);
+  color: #fff;
   font-weight: 600;
   margin: 1rem 2rem;
-  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
   text-align: center;
+  text-decoration: none;
+  display: block;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-primary-mobile:hover {
-  background-color: #f0f0f0;
+  background-color: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(109, 159, 127, 0.3);
+}
+
+/* Media Queries - Tablet Landscape */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .logo-text {
+    display: none;
+  }
+
+  .navbar {
+    margin-bottom: 0rem;
+    padding: 0.8rem 2rem;
+    top: 1.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+  }
 }
 
 /* Media Queries - Tablet y Móvil */
@@ -277,6 +392,10 @@ h6 {
     display: flex;
   }
 
+  .nav-links-mobile {
+    border-top: 1px solid rgba(109, 159, 127, 0.3);
+  }
+
   .hero {
     padding: 3.5rem 1rem 0 1rem;
     min-height: 100vh;
@@ -294,6 +413,12 @@ h6 {
   .hero-player-bg-right {
     max-width: 100%;
     max-height: 400px;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-links-mobile {
+    display: none;
   }
 }
 
@@ -838,21 +963,20 @@ h6 {
 
 .btn-catalog:hover {
   background-color: var(--accent-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(109, 159, 127, 0.3);
+  transform: translateY(-3px) skewX(-10deg);
 }
 
 .btn-design {
   background-color: transparent;
   color: var(--accent-color);
   border: 2px solid var(--accent-color);
+  transform: skewX(-10deg);
 }
 
 .btn-design:hover {
   background-color: var(--accent-color);
   color: #fff;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(109, 159, 127, 0.3);
+  transform: translateY(-3px) skewX(-10deg);
 }
 
 /* Responsive */
@@ -1367,27 +1491,29 @@ section {
   padding: 6rem 1rem;
   background: linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
   position: relative;
+  overflow: hidden;
 }
 
-.talles::before {
-  content: "";
+.talles-player-bg-right {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    transparent 100%
-  );
+  bottom: -200px;
+  right: 0px;
+  max-width: 100%;
+  height: auto;
+  max-height: 120%;
+  object-fit: contain;
+  z-index: 1;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: slideInRight 0.8s ease-out 0.3s both;
 }
 
 .talles-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 3;
 }
 
 .talles-header {
@@ -1536,8 +1662,7 @@ section {
 .talle-card:hover {
   background: rgba(30, 30, 30, 0.9);
   border-color: var(--accent-color);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(109, 159, 127, 0.2);
+  transform: skewX(-5deg) translateY(-3px);
 }
 
 /* Tamaño del Talle */
@@ -2186,7 +2311,7 @@ section {
 /* Mapa Interactivo */
 .contacto-mapa-container {
   margin-top: 4rem;
-  border-radius: 12px;
+  border-radius: 6px;
   overflow: hidden;
   border: 2px solid rgba(109, 159, 127, 0.3);
   height: 500px;
@@ -2255,7 +2380,7 @@ section {
 
   .contacto-mapa-container {
     margin-top: 2.5rem;
-    height: 400px;
+    height: 500px;
   }
 }
 
@@ -2714,9 +2839,9 @@ section {
   max-width: 1300px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 4rem;
-  margin-bottom: 3rem;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
 }
 
 .footer-column h4 {
@@ -2814,6 +2939,92 @@ section {
   transform: translateY(-3px);
 }
 
+/* Footer Hours */
+.footer-hours h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hours-list {
+  margin-bottom: 1.5rem;
+}
+
+.hour-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.hour-item .day {
+  color: #aaa;
+  font-weight: 500;
+}
+
+.hour-item .time {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.contact-info {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-info p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info p i {
+  color: var(--accent-color);
+  font-size: 1rem;
+}
+
+/* Footer CTA */
+.footer-cta {
+  max-width: 1300px;
+  margin: 2rem auto;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+}
+
+.cta-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, var(--accent-color) 0%, #5da65f 100%);
+  color: #000;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(109, 159, 127, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.cta-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(109, 159, 127, 0.5);
+}
+
+.cta-whatsapp i {
+  font-size: 1.2rem;
+}
+
 /* Footer Bottom */
 .footer-bottom {
   max-width: 1300px;
@@ -2887,6 +3098,25 @@ section {
     width: 40px;
     height: 40px;
     font-size: 1rem;
+  }
+
+  .footer-hours h4 {
+    font-size: 1rem;
+  }
+
+  .hour-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .contact-info p {
+    font-size: 0.85rem;
+  }
+
+  .cta-whatsapp {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
   }
 
   .footer-bottom {

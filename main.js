@@ -127,19 +127,59 @@ if (bannerContenido) {
 const menuHamburguesa = document.getElementById('menuHamburguesa');
 const navLinksMobile = document.getElementById('navLinksMobile');
 
-menuHamburguesa.addEventListener('click', () => {
-  menuHamburguesa.classList.toggle('active');
-  navLinksMobile.classList.toggle('active');
-});
+if (menuHamburguesa && navLinksMobile) {
+  const openMobileMenu = () => {
+    menuHamburguesa.classList.add('active');
+    menuHamburguesa.setAttribute('aria-expanded', 'true');
+    navLinksMobile.classList.add('active');
+    document.body.classList.add('menu-open');
+  };
 
-// Cerrar menú cuando se hace click en un enlace
-const mobileLinks = navLinksMobile.querySelectorAll('a');
-mobileLinks.forEach((link) => {
-  link.addEventListener('click', () => {
+  const closeMobileMenu = () => {
     menuHamburguesa.classList.remove('active');
+    menuHamburguesa.setAttribute('aria-expanded', 'false');
     navLinksMobile.classList.remove('active');
+    document.body.classList.remove('menu-open');
+  };
+
+  menuHamburguesa.addEventListener('click', () => {
+    const isOpen = navLinksMobile.classList.contains('active');
+    if (isOpen) {
+      closeMobileMenu();
+      return;
+    }
+    openMobileMenu();
   });
-});
+
+  // Cerrar menú cuando se hace click en un enlace
+  const mobileLinks = navLinksMobile.querySelectorAll('a');
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      closeMobileMenu();
+    });
+  });
+
+  // Cerrar menú al hacer click fuera del navbar
+  document.addEventListener('click', (event) => {
+    if (!navLinksMobile.classList.contains('active')) return;
+    if (event.target.closest('.navbar')) return;
+    closeMobileMenu();
+  });
+
+  // Cerrar menú con tecla Escape
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMobileMenu();
+    }
+  });
+
+  // Si vuelve a desktop, asegurar estado cerrado
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      closeMobileMenu();
+    }
+  });
+}
 
 // ═══════════════════════════════════════════════════════════════════
 // FUNCIONALIDAD DE FILTROS
@@ -155,7 +195,6 @@ filterBtns.forEach((btn) => {
     btn.classList.add('active');
 
     const filterValue = btn.getAttribute('data-filter');
-
     // Filtrar productos
     productCards.forEach((card) => {
       if (filterValue === 'todos') {
@@ -205,6 +244,33 @@ if (bannerCtaBtn) {
 }
 
 // ═══════════════════════════════════════════════════════════════════
+// BOTÓN PEDIR COTIZACIÓN - NAVBAR
+// ═══════════════════════════════════════════════════════════════════
+
+// Botón "Pedir Cotización" en el navbar
+const navbarBtnCotizacion = document.querySelector('.navbar .btn-primary');
+if (navbarBtnCotizacion) {
+  navbarBtnCotizacion.addEventListener('click', () => {
+    const cotizacionSection = document.querySelector('#cotizacion');
+    if (cotizacionSection) {
+      cotizacionSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
+
+// Botón "Pedir Cotización" en el menú móvil
+const mobileBtnCotizacion = document.querySelector('.btn-primary-mobile');
+if (mobileBtnCotizacion) {
+  mobileBtnCotizacion.addEventListener('click', (e) => {
+    e.preventDefault();
+    const cotizacionSection = document.querySelector('#cotizacion');
+    if (cotizacionSection) {
+      cotizacionSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════
 // FUNCIONALIDAD DE PESTAÑAS DE TALLES
 // ═══════════════════════════════════════════════════════════════════
 
@@ -224,3 +290,19 @@ tallesTabs.forEach((tab) => {
     document.getElementById(`tab-${tabName}`).classList.add('active');
   });
 });
+
+// Botón flotante: volver arriba
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+if (scrollTopBtn) {
+  const updateScrollTopBtnVisibility = () => {
+    const shouldShow = window.scrollY > 320;
+    scrollTopBtn.classList.toggle('visible', shouldShow);
+  };
+
+  updateScrollTopBtnVisibility();
+  window.addEventListener('scroll', updateScrollTopBtnVisibility, { passive: true });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}

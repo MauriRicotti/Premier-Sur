@@ -246,7 +246,7 @@ let catalogState = {
     style: []
   },
   currentPage: 1,
-  itemsPerPage: 6
+  itemsPerPage: 8
 };
 
 // ═══════════════════════════════════════════════════════════════════
@@ -284,29 +284,29 @@ function initializeCatalog() {
     });
   });
 
-  // Filtros por deporte
-  const sportCheckboxes = document.querySelectorAll('input[name="sport"]');
-  sportCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-      updateSportFilters();
-      renderProducts();
-    });
-  });
+  // Filtros por deporte (ELIMINADOS - Sidebar de filtros removido)
+  // const sportCheckboxes = document.querySelectorAll('input[name="sport"]');
+  // sportCheckboxes.forEach((checkbox) => {
+  //   checkbox.addEventListener("change", () => {
+  //     updateSportFilters();
+  //     renderProducts();
+  //   });
+  // });
 
-  // Filtros por estilo
-  const styleCheckboxes = document.querySelectorAll('input[name="style"]');
-  styleCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-      updateStyleFilters();
-      renderProducts();
-    });
-  });
+  // Filtros por estilo (ELIMINADOS - Sidebar de filtros removido)
+  // const styleCheckboxes = document.querySelectorAll('input[name="style"]');
+  // styleCheckboxes.forEach((checkbox) => {
+  //   checkbox.addEventListener("change", () => {
+  //     updateStyleFilters();
+  //     renderProducts();
+  //   });
+  // });
 
-  // Limpiar filtros
-  const clearBtn = document.getElementById("clearFilters");
-  if (clearBtn) {
-    clearBtn.addEventListener("click", clearAllFilters);
-  }
+  // Limpiar filtros (ELIMINADOS - Sidebar de filtros removido)
+  // const clearBtn = document.getElementById("clearFilters");
+  // if (clearBtn) {
+  //   clearBtn.addEventListener("click", clearAllFilters);
+  // }
 }
 
 function updateSportFilters() {
@@ -583,17 +583,79 @@ function initializeMenuHamburguesa() {
   const navLinksMobile = document.getElementById("navLinksMobile");
 
   if (menuHamburguesa && navLinksMobile) {
-    menuHamburguesa.addEventListener("click", () => {
-      navLinksMobile.classList.toggle("active");
-      menuHamburguesa.classList.toggle("active");
+    if (menuHamburguesa.dataset.menuBound === "true") {
+      return;
+    }
+    menuHamburguesa.dataset.menuBound = "true";
+
+    const openMobileMenu = () => {
+      menuHamburguesa.classList.add("active");
+      menuHamburguesa.setAttribute("aria-expanded", "true");
+      navLinksMobile.classList.add("active");
+      document.body.classList.add("menu-open");
+    };
+
+    const closeMobileMenu = () => {
+      menuHamburguesa.classList.remove("active");
+      menuHamburguesa.setAttribute("aria-expanded", "false");
+      navLinksMobile.classList.remove("active");
+      document.body.classList.remove("menu-open");
+    };
+
+    menuHamburguesa.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = navLinksMobile.classList.contains("active");
+      if (isOpen) {
+        closeMobileMenu();
+        return;
+      }
+      openMobileMenu();
     });
 
     const links = navLinksMobile.querySelectorAll("a");
     links.forEach((link) => {
       link.addEventListener("click", () => {
-        navLinksMobile.classList.remove("active");
-        menuHamburguesa.classList.remove("active");
+        closeMobileMenu();
       });
     });
+
+    document.addEventListener("click", (event) => {
+      if (!navLinksMobile.classList.contains("active")) return;
+      if (event.target.closest(".navbar")) return;
+      closeMobileMenu();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMobileMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768) {
+        closeMobileMenu();
+      }
+    });
   }
+}
+
+// Fallback inmediato por si DOMContentLoaded ya pasó en algunos entornos
+initializeMenuHamburguesa();
+
+// Botón flotante: volver arriba
+const catalogScrollTopBtn = document.getElementById("scrollTopBtn");
+if (catalogScrollTopBtn && catalogScrollTopBtn.dataset.bound !== "true") {
+  catalogScrollTopBtn.dataset.bound = "true";
+
+  const updateScrollTopBtnVisibility = () => {
+    const shouldShow = window.scrollY > 320;
+    catalogScrollTopBtn.classList.toggle("visible", shouldShow);
+  };
+
+  updateScrollTopBtnVisibility();
+  window.addEventListener("scroll", updateScrollTopBtnVisibility, { passive: true });
+
+  catalogScrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
