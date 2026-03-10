@@ -388,3 +388,20 @@ if (scrollTopBtn) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+
+// ═══════════════════════════════════════════════════════════════════
+// BARRA DE PROGRESO
+// ═══════════════════════════════════════════════════════════════════
+const initProgressBar = () => {
+  const progressBar = document.getElementById('progressBar');
+  if (!progressBar) return;
+
+  window.addEventListener('scroll', () => {
+    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = window.scrollY;
+    const scrollPercent = windowHeight > 0 ? (scrolled / windowHeight) * 100 : 0;
+    progressBar.style.width = scrollPercent + '%';
+  }, { passive: true });
+};
+
+initProgressBar();

@@ -27,6 +27,9 @@
     />
   </head>
   <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
     <!-- Navbar -->
     <nav class="navbar">
       <div class="navbar-container">
@@ -711,14 +714,17 @@
             <span class="accent">TESTIMONIOS</span> REALES
           </h2>
           <p class="testimonios-subtitle">
-            Equipos de todo el pais confian en nosotros para vestir cada
-            torneo, entrenamiento y final.
+            Equipos de todo el pais confian en nosotros para vestir cada torneo,
+            entrenamiento y final.
           </p>
         </div>
 
         <div class="testimonios-grid">
           <article class="testimonio-card">
-            <div class="testimonio-rating" aria-label="Calificacion 5 estrellas">
+            <div
+              class="testimonio-rating"
+              aria-label="Calificacion 5 estrellas"
+            >
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -737,7 +743,10 @@
           </article>
 
           <article class="testimonio-card">
-            <div class="testimonio-rating" aria-label="Calificacion 5 estrellas">
+            <div
+              class="testimonio-rating"
+              aria-label="Calificacion 5 estrellas"
+            >
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -756,7 +765,10 @@
           </article>
 
           <article class="testimonio-card">
-            <div class="testimonio-rating" aria-label="Calificacion 5 estrellas">
+            <div
+              class="testimonio-rating"
+              aria-label="Calificacion 5 estrellas"
+            >
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -765,8 +777,8 @@
             </div>
             <p class="testimonio-text">
               "Excelente terminacion y muy buena atencion en todo el proceso.
-              Volvimos a pedir para la segunda tira porque los jugadores quedaron
-              encantados."
+              Volvimos a pedir para la segunda tira porque los jugadores
+              quedaron encantados."
             </p>
             <div class="testimonio-author">
               <h3 class="testimonio-name">Nicolas S.</h3>
@@ -780,54 +792,82 @@
     <!-- Cotización Section -->
     <section class="cotizacion" id="cotizacion">
       <div class="cotizacion-container">
-        <!-- Lado Izquierdo - Información de Contacto -->
-        <div class="cotizacion-left">
+        <!-- Lado Izquierdo - Introducción -->
+        <div class="cotizacion-intro">
+          <span class="cotizacion-eyebrow">Pedidos a medida</span>
           <h2 class="cotizacion-title">
             PEDÍ TU<br /><span class="accent">COTIZACIÓN</span>
           </h2>
           <p class="cotizacion-description">
-            Completá el formulario y te contactamos para armar la mejor
-            propuesta para tu equipo. ¡Sin compromiso!
+            Completá el formulario y te enviamos una propuesta clara con diseño,
+            tiempos y costos. Trabajamos rápido y con foco en tu identidad.
           </p>
 
-          <!-- WhatsApp -->
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="bi bi-chat-left-dots"></i>
+          <div class="cotizacion-steps">
+            <div class="cotizacion-step">
+              <span class="cotizacion-step-index">01</span>
+              <div>
+                <h3>Contanos tu idea</h3>
+                <p>Detalle de deporte, cantidades y estilo.</p>
+              </div>
             </div>
-            <div class="contact-content">
-              <h4>WhatsApp</h4>
-              <p>+54 9 11 1234-5678</p>
+            <div class="cotizacion-step">
+              <span class="cotizacion-step-index">02</span>
+              <div>
+                <h3>Propuesta y boceto</h3>
+                <p>Te compartimos opciones en menos de 24 hs hábiles.</p>
+              </div>
+            </div>
+            <div class="cotizacion-step">
+              <span class="cotizacion-step-index">03</span>
+              <div>
+                <h3>Producción y entrega</h3>
+                <p>Coordinamos talles, muestras y fechas de entrega.</p>
+              </div>
             </div>
           </div>
 
-          <!-- Email -->
-          <div class="contact-item">
-            <div class="contact-icon">
+          <div class="cotizacion-trust">
+            <div class="cotizacion-trust-card">
+              <i class="bi bi-whatsapp"></i>
+              <div>
+                <p class="cotizacion-trust-title">WhatsApp directo</p>
+                <p class="cotizacion-trust-text">+54 9 11 1234-5678</p>
+              </div>
+            </div>
+            <div class="cotizacion-trust-card">
               <i class="bi bi-envelope"></i>
-            </div>
-            <div class="contact-content">
-              <h4>Email</h4>
-              <p>info@premiersur.com</p>
+              <div>
+                <p class="cotizacion-trust-title">Email comercial</p>
+                <p class="cotizacion-trust-text">info@premiersur.com</p>
+              </div>
             </div>
           </div>
 
-          <!-- Ubicación -->
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="bi bi-geo-alt"></i>
+          <div class="cotizacion-badges">
+            <div class="cotizacion-badge">
+              <i class="bi bi-shield-check"></i>
+              Pagos seguros
             </div>
-            <div class="contact-content">
-              <h4>Ubicación</h4>
-              <p>Buenos Aires, Argentina</p>
+            <div class="cotizacion-badge">
+              <i class="bi bi-palette"></i>
+              Diseño personalizado
+            </div>
+            <div class="cotizacion-badge">
+              <i class="bi bi-truck"></i>
+              Envíos coordinados
             </div>
           </div>
         </div>
 
         <!-- Lado Derecho - Formulario -->
         <div class="cotizacion-right">
+          <div class="cotizacion-form-head">
+            <p class="cotizacion-form-kicker">Formulario express</p>
+            <h3>Recibí una propuesta en 24 hs</h3>
+            <p>Completá los datos básicos y te respondemos sin demoras.</p>
+          </div>
           <form class="cotizacion-form">
-            <!-- Nombre completo y Email en una fila -->
             <div class="form-row">
               <div class="form-group">
                 <label for="nombre">Nombre completo</label>
@@ -839,7 +879,6 @@
               </div>
             </div>
 
-            <!-- Nombre del equipo y Deporte en una fila -->
             <div class="form-row">
               <div class="form-group">
                 <label for="equipo">Nombre del equipo</label>
@@ -858,7 +897,6 @@
               </div>
             </div>
 
-            <!-- Cantidad aproximada de prendas -->
             <div class="form-group">
               <label for="cantidad">Cantidad aproximada de prendas</label>
               <input
@@ -868,7 +906,6 @@
               />
             </div>
 
-            <!-- Mensaje (opcional) -->
             <div class="form-group">
               <label for="mensaje">Mensaje (opcional)</label>
               <textarea
@@ -878,13 +915,11 @@
               ></textarea>
             </div>
 
-            <!-- Botón Enviar -->
             <button type="submit" class="btn-enviar">
               Enviar Solicitud
               <i class="bi bi-send"></i>
             </button>
 
-            <!-- Texto de privacidad -->
             <p class="form-disclaimer">
               Al enviar, aceptas ser contactado por nuestro equipo comercial.
             </p>
@@ -929,11 +964,13 @@
           <div class="contacto-header-card">
             <p class="contacto-header-kicker">Atención personalizada</p>
             <p class="contacto-header-main">
-              Respondemos en menos de 24 hs hábiles con propuestas claras y
-              sin vueltas.
+              Respondemos en menos de 24 hs hábiles con propuestas claras y sin
+              vueltas.
             </p>
             <div class="contacto-header-actions">
-              <a class="contacto-primary" href="#cotizacion">Pedir cotización</a>
+              <a class="contacto-primary" href="#cotizacion"
+                >Pedir cotización</a
+              >
               <a
                 class="contacto-secondary"
                 href="https://wa.me/5491124567890"

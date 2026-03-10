@@ -102,6 +102,23 @@ body.menu-open {
   }
 }
 
+/* Progress Bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) 0%,
+    var(--accent-light) 100%
+  );
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(109, 159, 127, 0.5);
+}
+
 h1,
 h2,
 h3,
@@ -1110,7 +1127,7 @@ h6 {
 
   .filters {
     gap: 0.6rem;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
   }
 
@@ -2070,7 +2087,7 @@ section {
 
 .cotizacion {
   padding: 6rem 1rem;
-  background: linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
+  background: #0b0b0b;
   position: relative;
 }
 
@@ -2093,90 +2110,166 @@ section {
   max-width: 1300px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3.5rem;
+  align-items: start;
 }
 
 /* Lado Izquierdo - Información */
-.cotizacion-left {
+.cotizacion-intro {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+}
+
+.cotizacion-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 600;
 }
 
 .cotizacion-title {
   font-family: "Poppins", sans-serif;
-  font-size: 4.5rem;
+  font-size: 3.9rem;
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin: 0;
   letter-spacing: -0.02em;
 }
 
 .cotizacion-description {
-  font-size: 1rem;
-  color: #888;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.65);
   line-height: 1.6;
   max-width: 500px;
 }
 
-/* Items de Contacto */
-.contact-item {
+.cotizacion-steps {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.cotizacion-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem 1.2rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cotizacion-step-index {
+  font-weight: 700;
+  color: var(--accent-color);
+  font-size: 1.1rem;
+}
+
+.cotizacion-step h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.cotizacion-step p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cotizacion-trust {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.cotizacion-trust-card {
   display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
-  padding: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.05);
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.9rem 1rem;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.contact-item:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: var(--accent-color);
-  box-shadow: 0 0 20px rgba(109, 159, 127, 0.2);
-  transform: translateX(5px);
-}
-
-.contact-icon {
-  width: 35px;
-  height: 35px;
-  background-color: rgba(109, 159, 127, 0.15);
+.cotizacion-trust-card i {
+  width: 40px;
+  height: 40px;
   border-radius: 6px;
+  background: rgba(109, 159, 127, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
   color: var(--accent-color);
-  flex-shrink: 0;
-  transition: all 0.3s ease;
 }
 
-.contact-item:hover .contact-icon {
-  background-color: rgba(109, 159, 127, 0.3);
-  transform: scale(1.1);
-}
-
-.contact-content h4 {
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 0.15rem;
-}
-
-.contact-content p {
-  color: #aaa;
-  font-size: 0.75rem;
+.cotizacion-trust-title {
   margin: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.cotizacion-trust-text {
+  margin: 0.2rem 0 0;
+  font-weight: 600;
+}
+
+.cotizacion-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.cotizacion-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  transform: skewX(-10deg);
 }
 
 /* Lado Derecho - Formulario */
 .cotizacion-right {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(109, 159, 127, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
   padding: 2.5rem;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
+}
+
+.cotizacion-form-head {
+  margin-bottom: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cotizacion-form-head h3 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.cotizacion-form-head p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+}
+
+.cotizacion-form-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .cotizacion-form {
@@ -2278,7 +2371,7 @@ section {
 .btn-enviar:hover {
   background-color: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(109, 159, 127, 0.3);
+  transform: skewX(-10deg);
 }
 
 .btn-enviar i {
@@ -2304,7 +2397,7 @@ section {
   }
 
   .cotizacion-title {
-    font-size: 3.5rem;
+    font-size: 2.9rem;
     line-height: 1.2;
   }
 
@@ -2312,14 +2405,8 @@ section {
     font-size: 0.95rem;
   }
 
-  .contact-item {
-    gap: 1rem;
-  }
-
-  .contact-icon {
-    width: 45px;
-    height: 45px;
-    font-size: 1.3rem;
+  .cotizacion-trust {
+    grid-template-columns: 1fr;
   }
 
   .cotizacion-right {
@@ -2358,18 +2445,7 @@ section {
 
 .contacto {
   padding: 6rem 1rem;
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(109, 159, 127, 0),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at 80% 30%,
-      rgba(255, 255, 255, 0.08),
-      transparent 45%
-    ),
-    linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
+  background: #0b0b0b;
   position: relative;
 }
 
@@ -2435,9 +2511,9 @@ section {
 }
 
 .contacto-header-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: #171717;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
+  border-radius: 6px;
   padding: 2rem;
   backdrop-filter: blur(8px);
   display: flex;
@@ -2471,11 +2547,12 @@ section {
   align-items: center;
   justify-content: center;
   padding: 0.85rem 1.6rem;
-  border-radius: 999px;
+  border-radius: 6px;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
   transition: all 0.3s ease;
+  transform: skewX(-10deg);
 }
 
 .contacto-primary {
@@ -2506,7 +2583,7 @@ section {
 .contacto-panel {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
+  border-radius: 6px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -2514,11 +2591,7 @@ section {
 }
 
 .contacto-panel-info {
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    rgba(109, 159, 127, 0.08) 100%
-  );
+  background: #171717;
 }
 
 .contacto-item {
@@ -2538,8 +2611,8 @@ section {
 .contacto-item-icon {
   width: 52px;
   height: 52px;
-  border-radius: 14px;
-  background: rgba(109, 159, 127, 0.18);
+  border-radius: 6px;
+  background: #2a2a2a;
   border: 1px solid rgba(109, 159, 127, 0.35);
   display: flex;
   align-items: center;
@@ -2569,10 +2642,11 @@ section {
 }
 
 .contacto-item-highlight {
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
+  background: rgba(227, 2, 2, 0.06);
+  border-radius: 6px;
   padding: 1.2rem;
-  border: 1px solid rgba(109, 159, 127, 0.35);
+  border: 1px solid rgba(109, 159, 127, 0.35) !important;
+  border-bottom: 1px solid rgba(109, 159, 127, 0.35) !important;
 }
 
 .contacto-item-highlight .contacto-item-body p {
@@ -2585,7 +2659,7 @@ section {
 }
 
 .contacto-map-wrapper {
-  border-radius: 16px;
+  border-radius: 6px;
   overflow: hidden;
   border: 2px solid rgba(109, 159, 127, 0.3);
   height: 360px;
@@ -2599,7 +2673,7 @@ section {
 
 .contacto-hours {
   background: rgba(0, 0, 0, 0.35);
-  border-radius: 14px;
+  border-radius: 6px;
   padding: 1.2rem 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -2647,9 +2721,10 @@ section {
   align-items: center;
   gap: 0.4rem;
   padding: 0.4rem 0.8rem;
-  border-radius: 999px;
+  border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   transition: all 0.3s ease;
+  transform: skewX(-10deg);
 }
 
 .contacto-social-links a:hover {
