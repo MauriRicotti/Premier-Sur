@@ -2358,7 +2358,18 @@ section {
 
 .contacto {
   padding: 6rem 1rem;
-  background: linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(109, 159, 127, 0),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(255, 255, 255, 0.08),
+      transparent 45%
+    ),
+    linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
   position: relative;
 }
 
@@ -2382,117 +2393,202 @@ section {
   margin: 0 auto;
 }
 
-.contacto-title {
-  font-family: "Poppins", sans-serif;
-  font-size: 4.5rem;
-  font-weight: 800;
-  text-align: left;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
-}
-
-.contacto-subtitle {
-  font-size: 1rem;
-  color: #888;
-  text-align: left;
-  margin-bottom: 4rem;
-  line-height: 1.6;
-  max-width: 1100px;
-}
-
-/* Grid de Tarjetas de Contacto */
-.contacto-cards {
+.contacto-header {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.7fr);
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
 }
 
-.contacto-card {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(109, 159, 127, 0.05) 100%
-  );
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 6px;
-  padding: 1.5rem 1.2rem;
-  text-align: center;
-  transition: all 0.3s ease;
+.contacto-header-text {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 0.8rem;
 }
 
-.contacto-card:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(109, 159, 127, 0.12) 100%
-  );
-  border-color: var(--accent-color);
-  transform: translateY(-6px);
+.contacto-eyebrow {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 600;
 }
 
-.contacto-card-icon {
-  width: 55px;
-  height: 55px;
-  background: linear-gradient(
-    135deg,
-    rgba(109, 159, 127, 0.15),
-    rgba(109, 159, 127, 0.05)
-  );
-  border: 1px solid rgba(109, 159, 127, 0.3);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  color: var(--accent-color);
-  transition: all 0.3s ease;
-}
-
-.contacto-card:hover .contacto-card-icon {
-  background: linear-gradient(
-    135deg,
-    rgba(109, 159, 127, 0.25),
-    rgba(109, 159, 127, 0.12)
-  );
-  border-color: var(--accent-color);
-}
-
-.contacto-card-title {
+.contacto-title {
   font-family: "Poppins", sans-serif;
-  font-size: 0.9rem;
+  font-size: 3.8rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  text-align: left;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.contacto-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: left;
+  margin: 0;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+.contacto-header-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contacto-header-kicker {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.6);
   margin: 0;
 }
 
-.contacto-card-text {
-  color: #888;
-  font-size: 0.8rem;
+.contacto-header-main {
+  font-size: 1.1rem;
   line-height: 1.6;
   margin: 0;
 }
 
-.contacto-card-text strong {
-  color: #fff;
-  font-weight: 600;
+.contacto-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
 
-/* Mapa Interactivo */
-.contacto-mapa-container {
-  margin-top: 4rem;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 2px solid rgba(109, 159, 127, 0.3);
-  height: 500px;
+.contacto-primary,
+.contacto-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.contacto-mapa-container:hover {
+.contacto-primary {
+  background: var(--accent-color);
+  color: #0a0a0a;
+}
+
+.contacto-primary:hover {
+  transform: translateY(-2px);
+}
+
+.contacto-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+.contacto-secondary:hover {
   border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 2.5rem;
+}
+
+.contacto-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contacto-panel-info {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(109, 159, 127, 0.08) 100%
+  );
+}
+
+.contacto-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: flex-start;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contacto-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.contacto-item-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(109, 159, 127, 0.18);
+  border: 1px solid rgba(109, 159, 127, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  font-size: 1.4rem;
+}
+
+.contacto-item-body h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.contacto-item-body p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.contacto-item-note {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contacto-item-highlight {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 1.2rem;
+  border: 1px solid rgba(109, 159, 127, 0.35);
+}
+
+.contacto-item-highlight .contacto-item-body p {
+  color: rgba(255, 255, 255, 0.8);
+  padding-bottom: 1.1rem;
+}
+
+.contacto-panel-map {
+  gap: 1.8rem;
+}
+
+.contacto-map-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid rgba(109, 159, 127, 0.3);
+  height: 360px;
 }
 
 .contacto-mapa {
@@ -2501,15 +2597,78 @@ section {
   border: none;
 }
 
+.contacto-hours {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 14px;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.contacto-hours-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.contacto-hours p {
+  margin: 0 0 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+.contacto-hours-note {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contacto-social {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+}
+
+.contacto-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contacto-social-links a {
+  text-decoration: none;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+}
+
+.contacto-social-links a:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
 /* Responsive Contacto */
 @media (max-width: 1024px) {
-  .contacto-cards {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+  .contacto-header {
+    grid-template-columns: 1fr;
   }
 
   .contacto-title {
-    font-size: 2.8rem;
+    font-size: 3rem;
+  }
+
+  .contacto-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2518,42 +2677,34 @@ section {
     padding: 4rem 1rem;
   }
 
-  .contacto-cards {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
   .contacto-title {
-    font-size: 3.5rem;
+    font-size: 2.6rem;
     line-height: 1.2;
   }
 
   .contacto-subtitle {
-    font-size: 0.95rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .contacto-card {
-    padding: 2rem 1.5rem;
-  }
-
-  .contacto-card-icon {
-    width: 70px;
-    height: 70px;
-    font-size: 2rem;
-  }
-
-  .contacto-card-title {
-    font-size: 1.1rem;
-  }
-
-  .contacto-card-text {
     font-size: 0.9rem;
   }
 
-  .contacto-mapa-container {
-    margin-top: 2.5rem;
-    height: 500px;
+  .contacto-header-card {
+    padding: 1.5rem;
+  }
+
+  .contacto-panel {
+    padding: 1.5rem;
+  }
+
+  .contacto-item {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto-item-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .contacto-map-wrapper {
+    height: 300px;
   }
 }
 
@@ -2866,19 +3017,21 @@ section {
   z-index: 3;
   background:
     linear-gradient(
-      90deg,
-      rgba(109, 159, 127, 0) 0%,
-      rgba(109, 159, 127, 0.45) 22%,
-      rgba(109, 159, 127, 0.45) 78%,
-      rgba(109, 159, 127, 0) 100%
-    ) top / 100% 1px no-repeat,
+        90deg,
+        rgba(109, 159, 127, 0) 0%,
+        rgba(109, 159, 127, 0.45) 22%,
+        rgba(109, 159, 127, 0.45) 78%,
+        rgba(109, 159, 127, 0) 100%
+      )
+      top / 100% 1px no-repeat,
     linear-gradient(
-      90deg,
-      rgba(109, 159, 127, 0) 0%,
-      rgba(109, 159, 127, 0.35) 22%,
-      rgba(109, 159, 127, 0.35) 78%,
-      rgba(109, 159, 127, 0) 100%
-    ) bottom / 100% 1px no-repeat;
+        90deg,
+        rgba(109, 159, 127, 0) 0%,
+        rgba(109, 159, 127, 0.35) 22%,
+        rgba(109, 159, 127, 0.35) 78%,
+        rgba(109, 159, 127, 0) 100%
+      )
+      bottom / 100% 1px no-repeat;
 }
 
 .banner-cta-parallax {
@@ -2939,7 +3092,10 @@ section {
   font-weight: 700;
   border-radius: 4px;
   cursor: pointer;
-  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
   text-transform: uppercase;
   letter-spacing: 0.09em;
 }
@@ -3112,11 +3268,16 @@ section {
   transition: all 0.3s ease;
 }
 
-.Nexcore-link {
+.nexcore-link {
   color: var(--accent-color);
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.3s ease;
+}
+
+.nexcore-link:hover {
+  color: var(--accent-light);
+  text-decoration: underline;
 }
 
 .footer-socials a:hover {
