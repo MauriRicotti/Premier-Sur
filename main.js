@@ -312,6 +312,143 @@ faqQuestionBtns.forEach((btn) => {
   });
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// SEGUIMIENTO DE PEDIDOS
+// ─────────────────────────────────────────────────────────────────────────────
+const trackingForm = document.querySelector('.tracking-form');
+if (trackingForm) {
+  const trackingInput = trackingForm.querySelector('#trackingCode');
+  const trackingBtn = trackingForm.querySelector('.tracking-btn');
+  const trackingStepsList = document.querySelector('.tracking-steps-list');
+  const trackingStatus = document.querySelector('.tracking-status');
+  const trackingStepItems = document.querySelectorAll('.tracking-step');
+
+  const normalizeCode = (value) => value.trim().toUpperCase();
+
+  const mapEstadoToStep = (estado) => {
+    switch (estado) {
+      case 'contacto':
+      case 'aprobacion':
+      case 'diseno':
+        return 'diseno';
+      case 'produccion':
+      case 'produccion_prenda':
+        return 'produccion_prenda';
+      case 'personalizacion':
+        return 'personalizacion';
+      case 'control':
+      case 'control_entrega':
+        return 'control_entrega';
+      case 'finalizado':
+        return 'finalizado';
+      default:
+        return null;
+    }
+  };
+
+  const setStepsVisible = (visible) => {
+    if (!trackingStepsList) return;
+    trackingStepsList.classList.toggle('is-hidden', !visible);
+  };
+
+  const setActiveStep = (stepId) => {
+    trackingStepItems.forEach((item) => {
+      const isActive = stepId && item.dataset.step === stepId;
+      item.classList.toggle('is-active', isActive);
+      item.classList.toggle('is-dim', Boolean(stepId) && !isActive);
+    });
+  };
+
+  const defaultTrackingMessage =
+    'Colocá el código proporcionado por nuestro equipo de trabajo para seguir la producción de tu pedido.';
+
+  const updateStatus = (message) => {
+    if (!trackingStatus) return;
+    trackingStatus.textContent = message;
+  };
+
+  const findOrderByCode = (code) => {
+    if (!code) return null;
+    try {
+      const orders = JSON.parse(localStorage.getItem('dashboardOrders')) || [];
+      return orders.find((order) => normalizeCode(order.codigo || '') === code) || null;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const ensureDemoOrder = () => {
+    try {
+      const orders = JSON.parse(localStorage.getItem('dashboardOrders')) || [];
+      const exists = orders.some(
+        (order) => normalizeCode(order.codigo || '') === 'PS-000123'
+      );
+      if (exists) return;
+      const demoOrder = {
+        id: 'demo-ps-000123',
+        codigo: 'PS-000123',
+        cliente: 'Club Demo',
+        producto: 'Camisetas',
+        cantidad: 20,
+        cantidades: { camisetas: 20, musculosas: 0, shorts: 0 },
+        fecha: '',
+        notas: 'Pedido de demostración para seguimiento.',
+        estado: 'personalizacion',
+        createdAt: new Date().toISOString(),
+      };
+      orders.unshift(demoOrder);
+      localStorage.setItem('dashboardOrders', JSON.stringify(orders));
+    } catch (error) {
+      // No-op
+    }
+  };
+
+  const handleTracking = () => {
+    const code = normalizeCode(trackingInput?.value || '');
+    if (!code) {
+      setStepsVisible(false);
+      setActiveStep(null);
+      updateStatus(defaultTrackingMessage);
+      return;
+    }
+
+    ensureDemoOrder();
+    const order = findOrderByCode(code);
+    if (!order) {
+      setStepsVisible(false);
+      setActiveStep(null);
+      updateStatus('No encontramos ese código. Verificá y probá de nuevo.');
+      return;
+    }
+
+    const stepId = mapEstadoToStep(order.estado);
+    setStepsVisible(true);
+    setActiveStep(stepId);
+
+    const stepTitle = stepId
+      ? document.querySelector(`.tracking-step[data-step="${stepId}"] h3`)?.textContent
+      : null;
+
+    updateStatus(
+      stepTitle
+        ? `Estado actual: ${stepTitle}`
+        : 'Estamos actualizando tu estado. Consultanos por WhatsApp.'
+    );
+  };
+
+  setStepsVisible(false);
+  updateStatus(defaultTrackingMessage);
+
+  trackingForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    handleTracking();
+  });
+
+  if (trackingBtn) {
+    trackingBtn.addEventListener('click', handleTracking);
+  }
+}
+
 // ═══════════════════════════════════════════════════════════════════
 // SCROLL SUAVE - BOTÓN BANNER CTA
 // ═══════════════════════════════════════════════════════════════════
@@ -408,3 +545,68 @@ const initProgressBar = () => {
 
 initProgressBar();
 
+// Acceso al dashboard con Ctrl + Shift + D
+const dashboardModal = document.getElementById('dashboardModal');
+const dashboardAccessForm = document.getElementById('dashboardAccessForm');
+const dashboardPasswordInput = document.getElementById('dashboardPassword');
+const dashboardModalError = document.getElementById('dashboardModalError');
+
+const isEditableTarget = (target) =>
+  target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable);
+
+const openDashboardModal = () => {
+  if (!dashboardModal) return;
+  dashboardModal.classList.add('is-active');
+  dashboardModal.setAttribute('aria-hidden', 'false');
+  if (dashboardModalError) dashboardModalError.textContent = '';
+  if (dashboardPasswordInput) {
+    dashboardPasswordInput.value = '';
+    dashboardPasswordInput.focus();
+  }
+};
+
+const closeDashboardModal = () => {
+  if (!dashboardModal) return;
+  dashboardModal.classList.remove('is-active');
+  dashboardModal.setAttribute('aria-hidden', 'true');
+};
+
+document.addEventListener('keydown', (event) => {
+  if (isEditableTarget(event.target)) return;
+  const isShortcut = event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'd';
+  if (!isShortcut) return;
+  event.preventDefault();
+  openDashboardModal();
+});
+
+if (dashboardModal) {
+  dashboardModal.addEventListener('click', (event) => {
+    if (event.target.hasAttribute('data-modal-close')) {
+      closeDashboardModal();
+    }
+  });
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    closeDashboardModal();
+  }
+});
+
+if (dashboardAccessForm) {
+  dashboardAccessForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const password = dashboardPasswordInput ? dashboardPasswordInput.value.trim() : '';
+    if (password === '1234') {
+      window.location.href = 'dashboard/index.html';
+      return;
+    }
+    if (dashboardModalError) {
+      dashboardModalError.textContent = 'Contraseña incorrecta. Intentá de nuevo.';
+    }
+    if (dashboardPasswordInput) {
+      dashboardPasswordInput.focus();
+      dashboardPasswordInput.select();
+    }
+  });
+}

@@ -1220,6 +1220,108 @@
       </div>
     </section>
 
+    <!-- Seguimiento de pedidos -->
+    <section class="tracking-section" id="seguimiento">
+      <div class="tracking-wrapper">
+        <div class="tracking-header">
+          <h2 class="tracking-title">
+            <span class="accent">SEGUÍ</span> TU PEDIDO
+          </h2>
+          <p class="tracking-subtitle">
+            Ingresá el código de tu pedido para conocer en qué etapa está tu
+            equipo. Te mostramos el proceso completo de principio a fin.
+          </p>
+        </div>
+
+        <div class="tracking-grid">
+          <form class="tracking-form" autocomplete="off">
+            <label class="tracking-label" for="trackingCode">
+              Código de pedido
+            </label>
+            <div class="tracking-input-row">
+              <input
+                type="text"
+                id="trackingCode"
+                name="trackingCode"
+                placeholder="PS-000123"
+                aria-label="Código de pedido"
+              />
+              <button type="button" class="btn-primary tracking-btn">
+                Consultar estado
+              </button>
+            </div>
+            <p class="tracking-hint">
+              Si no encontrás el código, pedíselo a nuestro equipo por WhatsApp.
+            </p>
+          </form>
+
+          <div class="tracking-steps">
+            <div class="tracking-steps-header">Etapas del proceso</div>
+            <p class="tracking-status" aria-live="polite">
+              Colocá el código proporcionado por nuestro equipo de trabajo para
+              seguir la producción de tu pedido.
+            </p>
+            <ol class="tracking-steps-list">
+              <li class="tracking-step" data-step="diseno">
+                <span class="tracking-step-number">1</span>
+                <div class="tracking-step-body">
+                  <h3>Diseño</h3>
+                  <p>
+                    Se crea el diseño de la prenda según lo que quiere el
+                    cliente: colores, logos, nombres, números, sponsors y estilo
+                    del equipo. Se presenta un mockup antes de producir.
+                  </p>
+                </div>
+              </li>
+              <li class="tracking-step" data-step="produccion_prenda">
+                <span class="tracking-step-number">3</span>
+                <div class="tracking-step-body">
+                  <h3>Producción de la prenda</h3>
+                  <p>
+                    Se fabrican o preparan las prendas base (remeras, shorts,
+                    buzos, etc.). Dependiendo del pedido, pueden confeccionarse
+                    desde cero o usar prendas ya hechas.
+                  </p>
+                </div>
+              </li>
+              <li class="tracking-step" data-step="personalizacion">
+                <span class="tracking-step-number">4</span>
+                <div class="tracking-step-body">
+                  <h3>Personalización / estampado</h3>
+                  <p>
+                    Se aplica el diseño con técnicas como sublimación,
+                    serigrafía, vinilo textil o bordado, colocando nombres,
+                    números y logos en cada prenda.
+                  </p>
+                </div>
+              </li>
+              <li class="tracking-step" data-step="control_entrega">
+                <span class="tracking-step-number">5</span>
+                <div class="tracking-step-body">
+                  <h3>Control de calidad y entrega</h3>
+                  <p>
+                    Se revisa que todo esté bien hecho (talles correctos,
+                    impresión correcta, sin errores). Luego se empaqueta y se
+                    entrega al cliente o al equipo.
+                  </p>
+                </div>
+              </li>
+              <li class="tracking-step" data-step="finalizado">
+                <span class="tracking-step-number">6</span>
+                <div class="tracking-step-body">
+                  <h3>Tu pedido fue finalizado correctamente</h3>
+                  <p>
+                    En breve nuestro equipo estará en contacto para coordinar un
+                    día, lugar y fecha de entrega.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
       <div class="footer-container">
@@ -1336,6 +1438,53 @@
         </p>
       </div>
     </footer>
+
+    <div class="dashboard-modal" id="dashboardModal" aria-hidden="true">
+      <div class="dashboard-modal-backdrop" data-modal-close></div>
+      <div
+        class="dashboard-modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="dashboardModalTitle"
+      >
+        <div class="dashboard-modal-header">
+          <h3 id="dashboardModalTitle">Acceso al dashboard</h3>
+          <button
+            type="button"
+            class="dashboard-modal-close"
+            data-modal-close
+            aria-label="Cerrar"
+          >
+            ×
+          </button>
+        </div>
+        <p class="dashboard-modal-text">
+          Ingresá la contraseña para continuar.
+        </p>
+        <form id="dashboardAccessForm" class="dashboard-modal-form">
+          <label for="dashboardPassword">Contraseña</label>
+          <input
+            id="dashboardPassword"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="••••"
+            required
+          />
+          <p
+            class="dashboard-modal-error"
+            id="dashboardModalError"
+            role="alert"
+          ></p>
+          <div class="dashboard-modal-actions">
+            <button type="submit" class="btn-primary">Ingresar</button>
+            <button type="button" class="btn-outline" data-modal-close>
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <button
       class="scroll-top-btn"
