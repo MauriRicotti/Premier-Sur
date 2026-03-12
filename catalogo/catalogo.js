@@ -256,7 +256,7 @@ let catalogState = {
   currentPage: 1,
   itemsPerPage: 8
 };
-const randomizedProducts = shuffleArray(productsData);
+const randomizedProducts = productsData;
 
 // ═══════════════════════════════════════════════════════════════════
 // INICIALIZACIÓN
@@ -264,7 +264,7 @@ const randomizedProducts = shuffleArray(productsData);
 
 console.log("📜 catalogo.js está cargando...");
 console.log("📦 Total de productos:", productsData.length);
-console.log("🔀 Productos aleatorizados:", randomizedProducts.length);
+console.log("📦 Productos en orden fijo:", randomizedProducts.length);
 
 const bootCatalog = () => {
   console.log("🚀 bootCatalog() iniciando");

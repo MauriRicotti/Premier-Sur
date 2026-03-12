@@ -56,7 +56,7 @@ body.menu-open {
   width: 48px;
   height: 48px;
   border: 1px solid rgba(109, 159, 127, 0.45);
-  border-radius: 999px;
+  border-radius: 6px;
   background: rgba(12, 15, 14, 0.9);
   color: #fff;
   display: inline-flex;
@@ -243,6 +243,25 @@ h6 {
   background-color: var(--accent-dark);
   transform: translateY(-2px);
   transform: skewX(-10deg);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  padding: 0.7rem 1.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  transform: skewX(-10deg);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: skewX(-10deg) translateY(-2px);
 }
 
 /* Menú Hamburguesa */
@@ -746,7 +765,7 @@ h6 {
   flex-direction: column;
   gap: 2rem;
   margin-bottom: 3rem;
-  padding: 0 2rem;
+  padding: 0;
 }
 
 .designs-footer {
@@ -851,6 +870,17 @@ h6 {
   padding: 1rem 0;
   scroll-behavior: smooth;
   flex: 1;
+  cursor: grab;
+}
+
+.carousel.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.carousel img {
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .carousel::-webkit-scrollbar {
@@ -1128,7 +1158,7 @@ h6 {
   .designs-header {
     flex-direction: column;
     gap: 1.5rem;
-    padding: 0 1rem;
+    padding: 0;
   }
 
   .designs-footer {

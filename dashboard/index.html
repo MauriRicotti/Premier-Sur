@@ -1,0 +1,413 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Control de Pedidos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-row">
+            <span class="brand-tag">Premier Sur</span>
+            <button
+              type="button"
+              class="sidebar-toggle"
+              id="sidebarToggle"
+              aria-expanded="true"
+              aria-controls="sidebarNav"
+              title="Contraer sidebar"
+            >
+              ≡
+            </button>
+          </div>
+          <h1>Dashboard</h1>
+          <p>Control de pedidos y flujo de producción.</p>
+        </div>
+        <div class="sidebar-divider" aria-hidden="true"></div>
+        <nav class="side-nav" id="sidebarNav">
+          <a class="side-link is-active" href="#" data-view="inicio">
+            <i class="bi bi-house-door"></i>
+            <span>Inicio</span>
+          </a>
+          <a class="side-link" href="#" data-view="pedidos">
+            <i class="bi bi-clipboard-check"></i>
+            <span>Pedidos</span>
+          </a>
+          <a class="side-link" href="#" data-view="stock">
+            <i class="bi bi-box-seam"></i>
+            <span>Stock</span>
+          </a>
+        </nav>
+        <div class="side-actions bottom-actions">
+          <button type="button" class="btn ghost" id="exportPdfSidebar">
+            <i class="bi bi-download"></i>
+            <span>Exportar</span>
+          </button>
+          <button type="button" class="btn ghost">
+            <i class="bi bi-gear"></i>
+            <span>Configuración</span>
+          </button>
+          <a class="btn exit" href="../index.html">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Salir</span>
+          </a>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <span class="kicker">Dashboard</span>
+            <h2>Control de pedidos</h2>
+          </div>
+          <div class="topbar-metrics">
+            <div class="metric-card">
+              <span class="metric-label">Pedidos activos</span>
+              <span class="metric-value" id="totalPedidos">0</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">Última actualización</span>
+              <span class="metric-value" id="ultimaActualizacion">—</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="panel form-panel view-panel" data-view="inicio">
+          <div class="panel-header with-price">
+            <div class="panel-header-main">
+              <div>
+                <span class="kicker">Nuevo pedido</span>
+                <h3>Cargar pedido</h3>
+              </div>
+              <p>
+                Sumá un pedido y asigná el paso inicial. Luego podés moverlo
+                dentro del tablero.
+              </p>
+            </div>
+            <div class="price-box">
+              <span class="price-label">Total estimado</span>
+              <span class="price-value" id="totalPrecio">$0</span>
+            </div>
+          </div>
+          <form id="pedidoForm" class="pedido-form">
+            <label>
+              Cliente o club
+              <input
+                type="text"
+                name="cliente"
+                required
+                placeholder="Club Atlético Sur"
+              />
+            </label>
+            <label>
+              Código de pedido
+              <input
+                type="text"
+                name="codigo"
+                id="codigoPedido"
+                placeholder="PS-000001"
+                readonly
+              />
+            </label>
+            <div class="product-block full">
+              <div class="product-block-header">
+                <h4>Productos</h4>
+                <p>Seleccioná los productos y cargá las cantidades.</p>
+              </div>
+              <div class="product-grid" id="productoSelect">
+                <div class="product-item" data-product="Musculosas">
+                  <input
+                    id="prodMusculosas"
+                    type="checkbox"
+                    name="producto"
+                    value="Musculosas"
+                    class="product-check"
+                  />
+                  <div class="product-info">
+                    <span class="product-name">Musculosas</span>
+                  </div>
+                  <label class="product-qty">
+                    <span class="product-meta">Cantidad</span>
+                    <input
+                      type="number"
+                      name="qtyMusculosas"
+                      min="0"
+                      value="0"
+                    />
+                  </label>
+                </div>
+                <div class="product-item" data-product="Camisetas">
+                  <input
+                    id="prodCamisetas"
+                    type="checkbox"
+                    name="producto"
+                    value="Camisetas"
+                    class="product-check"
+                  />
+                  <div class="product-info">
+                    <span class="product-name">Camisetas</span>
+                  </div>
+                  <label class="product-qty">
+                    <span class="product-meta">Cantidad</span>
+                    <input
+                      type="number"
+                      name="qtyCamisetas"
+                      min="0"
+                      value="0"
+                    />
+                  </label>
+                </div>
+                <div class="product-item" data-product="Shorts">
+                  <input
+                    id="prodShorts"
+                    type="checkbox"
+                    name="producto"
+                    value="Shorts"
+                    class="product-check"
+                  />
+                  <div class="product-info">
+                    <span class="product-name">Shorts</span>
+                  </div>
+                  <label class="product-qty">
+                    <span class="product-meta">Cantidad</span>
+                    <input type="number" name="qtyShorts" min="0" value="0" />
+                  </label>
+                </div>
+              </div>
+            </div>
+            <label>
+              Cantidad total
+              <input
+                type="number"
+                name="cantidad"
+                id="cantidadTotal"
+                min="1"
+                required
+                readonly
+              />
+            </label>
+            <label>
+              Estado de pago
+              <select name="pago">
+                <option value="Pendiente">Pendiente</option>
+                <option value="Señado">Señado</option>
+                <option value="Pago completo">Pago completo</option>
+              </select>
+            </label>
+            <label>
+              Fecha estimada
+              <input type="date" name="fecha" required />
+            </label>
+            <label class="full">
+              Notas internas
+              <textarea
+                name="notas"
+                rows="3"
+                placeholder="Colores, talles, particularidades del pedido."
+              ></textarea>
+            </label>
+            <div class="form-actions">
+              <button type="submit" class="btn primary">Agregar pedido</button>
+              <button type="reset" class="btn ghost">Limpiar</button>
+              <button type="button" class="btn ghost" id="loadDemoOrders">
+                Cargar demo
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel board-panel view-panel" data-view="inicio">
+          <div class="panel-header">
+            <div>
+              <span class="kicker">Pipeline</span>
+              <h3>Tablero de producción</h3>
+            </div>
+            <p>
+              Arrastrá o usá los botones para avanzar o retroceder el estado.
+            </p>
+          </div>
+          <div class="board" id="board"></div>
+        </section>
+        <section class="panel view-panel is-hidden" data-view="pedidos">
+          <div class="panel-header">
+            <div>
+              <span class="kicker">Pedidos en tablero</span>
+              <h3>Activos en producción</h3>
+            </div>
+            <p>Pedidos que aún están en proceso dentro del tablero.</p>
+          </div>
+          <div class="table-wrap">
+            <table class="orders-table orders-table--compact">
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Cliente</th>
+                  <th>Estado</th>
+                  <th>Productos</th>
+                  <th>Cantidad total</th>
+                  <th>Pago</th>
+                  <th>Estado pago</th>
+                  <th>Fecha estimada</th>
+                  <th>Creado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tableroTableBody">
+                <tr>
+                  <td colspan="10" class="table-empty">
+                    No hay pedidos en el tablero.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel view-panel is-hidden" data-view="pedidos">
+          <div class="panel-header">
+            <div>
+              <span class="kicker">Pedidos finalizados</span>
+              <h3>Historial completo</h3>
+            </div>
+            <p>Listado de pedidos finalizados con toda la información.</p>
+          </div>
+          <div class="table-toolbar">
+            <div class="toolbar-search">
+              <label style="margin-bottom: 5px" for="pedidosSearch"
+                >Buscar</label
+              >
+              <div class="search-field">
+                <i class="bi bi-search" aria-hidden="true"></i>
+                <input
+                  id="pedidosSearch"
+                  type="search"
+                  placeholder="Código o cliente"
+                />
+              </div>
+            </div>
+            <div class="toolbar-filters">
+              <label>
+                Mes
+                <input id="monthFilter" type="month" />
+              </label>
+              <label>
+                Desde
+                <input id="dateFrom" type="date" />
+              </label>
+              <label>
+                Hasta
+                <input id="dateTo" type="date" />
+              </label>
+            </div>
+            <div class="toolbar-actions">
+              <button type="button" class="btn ghost" id="exportCsv">
+                Exportar CSV
+              </button>
+              <button type="button" class="btn ghost" id="clearFilters">
+                Limpiar filtros
+              </button>
+            </div>
+          </div>
+          <div class="table-summary">
+            <div class="summary-card">
+              <span class="summary-label">Finalizados</span>
+              <span class="summary-value" id="summaryCount">0</span>
+            </div>
+            <div class="summary-card">
+              <span class="summary-label">Total facturado</span>
+              <span class="summary-value" id="summaryTotal">$0</span>
+            </div>
+            <div class="summary-card">
+              <span class="summary-label">Promedio pedido</span>
+              <span class="summary-value" id="summaryAvg">$0</span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Productos</th>
+                  <th>Cantidad total</th>
+                  <th>Total</th>
+                  <th>Fecha estimada</th>
+                  <th>Creado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="pedidosTableBody">
+                <tr>
+                  <td colspan="7" class="table-empty">
+                    No hay pedidos finalizados.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <button type="button" class="btn ghost" id="loadMorePedidos">
+              Ver más
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toastSuccess" role="status" aria-live="polite">
+      Pedido agregado exitosamente
+    </div>
+    <div
+      class="toast toast-undo"
+      id="undoToast"
+      role="status"
+      aria-live="polite"
+    >
+      <span class="toast-text"></span>
+      <button type="button" class="btn ghost small" id="undoActionBtn">
+        Deshacer
+      </button>
+    </div>
+
+    <template id="cardTemplate">
+      <article class="pedido-card">
+        <header>
+          <div>
+            <h3 class="pedido-title"></h3>
+            <p
+              class="pedido-subtitle copy-code"
+              data-action="copy"
+              title="Copiar código"
+            ></p>
+          </div>
+          <span class="pedido-badge"></span>
+        </header>
+        <div class="pedido-info"></div>
+        <p class="pedido-notas"></p>
+        <div class="pedido-actions">
+          <button class="btn ghost small" data-action="finalize">
+            Finalizado
+          </button>
+          <button class="btn danger small" data-action="delete">
+            Eliminar
+          </button>
+        </div>
+      </article>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.3/dist/jspdf.plugin.autotable.min.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

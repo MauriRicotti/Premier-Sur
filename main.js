@@ -312,6 +312,68 @@ faqQuestionBtns.forEach((btn) => {
   });
 });
 
+// ────────────────────────────────────────────────────────────────────────────
+// CAROUSEL DRAG (DESKTOP: click + drag like touch)
+// ────────────────────────────────────────────────────────────────────────────
+const carousels = document.querySelectorAll('.carousel');
+carousels.forEach((carousel) => {
+  let isDragging = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let moved = false;
+  let lastDragTime = 0;
+
+  const onPointerDown = (event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    isDragging = true;
+    moved = false;
+    startX = event.clientX;
+    startScrollLeft = carousel.scrollLeft;
+    carousel.dataset.prevScrollBehavior = carousel.style.scrollBehavior || '';
+    carousel.style.scrollBehavior = 'auto';
+    carousel.classList.add('is-dragging');
+    carousel.setPointerCapture?.(event.pointerId);
+  };
+
+  const onPointerMove = (event) => {
+    if (!isDragging) return;
+    const deltaX = event.clientX - startX;
+    if (Math.abs(deltaX) > 3) {
+      moved = true;
+    }
+    carousel.scrollLeft = startScrollLeft - deltaX;
+    if (moved) {
+      event.preventDefault();
+    }
+  };
+
+  const endDrag = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    carousel.classList.remove('is-dragging');
+    if (carousel.dataset.prevScrollBehavior !== undefined) {
+      carousel.style.scrollBehavior = carousel.dataset.prevScrollBehavior;
+      delete carousel.dataset.prevScrollBehavior;
+    }
+    if (moved) {
+      lastDragTime = Date.now();
+    }
+  };
+
+  carousel.addEventListener('pointerdown', onPointerDown);
+  carousel.addEventListener('pointermove', onPointerMove);
+  carousel.addEventListener('pointerup', endDrag);
+  carousel.addEventListener('pointercancel', endDrag);
+  carousel.addEventListener('pointerleave', endDrag);
+
+  carousel.addEventListener('click', (event) => {
+    if (Date.now() - lastDragTime < 250) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  });
+});
+
 // ─────────────────────────────────────────────────────────────────────────────
 // SEGUIMIENTO DE PEDIDOS
 // ─────────────────────────────────────────────────────────────────────────────
