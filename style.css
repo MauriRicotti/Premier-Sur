@@ -3340,6 +3340,17 @@ h6 {
   padding: 0.85rem 1.6rem;
 }
 
+.tracking-submit {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transform: none;
+}
+
 .tracking-hint {
   margin: 0;
   font-size: 0.9rem;
@@ -3446,14 +3457,36 @@ h6 {
 
   .tracking-form {
     padding: 1.6rem;
+    order: 1;
   }
 
   .tracking-input-row {
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .tracking-input-row input {
+    flex: 0 0 auto;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    height: 44px;
+    flex: 1 1 auto;
+    order: 1;
   }
 
   .tracking-btn {
     width: 100%;
+    order: 3;
+  }
+
+  .tracking-submit {
+    display: inline-flex;
+    order: 2;
+  }
+
+  .tracking-steps {
+    order: 2;
   }
 }
 
