@@ -1177,7 +1177,7 @@ h6 {
 
   .designs-footer {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1.5rem;
     width: 100%;
   }
@@ -1189,7 +1189,7 @@ h6 {
 
   .designs-description {
     font-size: 0.9rem;
-    text-align: center;
+    text-align: left;
   }
 
   .filters {
@@ -1993,6 +1993,11 @@ h6 {
 @media (max-width: 768px) {
   .talles {
     padding: 4rem 1rem;
+  }
+
+  .talles::before {
+    left: 0;
+    right: 0;
   }
 
   .talles-player-bg-right {
