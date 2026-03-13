@@ -43,7 +43,8 @@ const loadExternalScript = (src) =>
 
 const initHeroFog = () => {
   const vantaContainer = document.getElementById('vanta-waves');
-  if (!vantaContainer || shouldDisableHeavyEffects()) return;
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  if (!vantaContainer || isMobile || shouldDisableHeavyEffects()) return;
 
   const startFog = async () => {
     try {
