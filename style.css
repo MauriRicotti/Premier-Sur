@@ -1624,7 +1624,23 @@ h6 {
   }
 
   .como-step {
-    grid-template-columns: 1fr;
+    display: block;
+    position: relative;
+    padding: 5.2rem 1.4rem 1.2rem;
+  }
+
+  .como-step-icon,
+  .como-step-index {
+    position: absolute;
+    top: 1rem;
+  }
+
+  .como-step-icon {
+    left: 1rem;
+  }
+
+  .como-step-index {
+    right: 1rem;
   }
 }
 
