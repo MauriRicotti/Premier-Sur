@@ -11,79 +11,6 @@ const shouldDisableHeavyEffects = () => {
   return prefersReducedMotion || saveDataEnabled || lowCoreCpu || lowMemory;
 };
 
-const loadExternalScript = (src) =>
-  new Promise((resolve, reject) => {
-    const existingScript = document.querySelector(`script[src="${src}"]`);
-    if (existingScript) {
-      if (existingScript.dataset.loaded === 'true') {
-        resolve();
-        return;
-      }
-      existingScript.addEventListener('load', () => resolve(), { once: true });
-      existingScript.addEventListener('error', () => reject(new Error(`No se pudo cargar ${src}`)), {
-        once: true,
-      });
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    script.addEventListener(
-      'load',
-      () => {
-        script.dataset.loaded = 'true';
-        resolve();
-      },
-      { once: true },
-    );
-    script.addEventListener('error', () => reject(new Error(`No se pudo cargar ${src}`)), { once: true });
-    document.head.appendChild(script);
-  });
-
-const initHeroFog = () => {
-  const vantaContainer = document.getElementById('vanta-waves');
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-  if (!vantaContainer || isMobile || shouldDisableHeavyEffects()) return;
-
-  const startFog = async () => {
-    try {
-      await loadExternalScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js');
-      await loadExternalScript('https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js');
-      if (!window.VANTA || !window.VANTA.FOG) return;
-
-      window.VANTA.FOG({
-        el: '#vanta-waves',
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.0,
-        minWidth: 200.0,
-        highlightColor: 0x2d2d2d,
-        midtoneColor: 0x1a1a1a,
-        lowlightColor: 0x0a0a0a,
-        baseColor: 0x0a0a0a,
-        speed: 2.8,
-      });
-    } catch (error) {
-      console.warn(error);
-    }
-  };
-
-  const observer = new IntersectionObserver(
-    (entries, currentObserver) => {
-      if (!entries[0].isIntersecting) return;
-      startFog();
-      currentObserver.disconnect();
-    },
-    { rootMargin: '200px 0px' },
-  );
-
-  observer.observe(vantaContainer);
-};
-
-initHeroFog();
-
 const optimizeImageLoading = () => {
   const images = document.querySelectorAll('img');
   images.forEach((image, index) => {
@@ -104,6 +31,45 @@ optimizeImageLoading();
 // ═══════════════════════════════════════════════════════════════════
 // BANNER ANIMADO
 // ═══════════════════════════════════════════════════════════════════
+
+const initHeroParallax = () => {
+  const hero = document.querySelector('.hero');
+  const leftJersey = document.querySelector('.hero-player-bg');
+  const rightJersey = document.querySelector('.hero-player-bg-right');
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+  if (!hero || !leftJersey || !rightJersey || isMobile || shouldDisableHeavyEffects()) return;
+
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  let rafId = null;
+
+  const updateParallax = () => {
+    rafId = null;
+    const rect = hero.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const heroMid = rect.top + rect.height / 2;
+    const viewportMid = viewportHeight / 2;
+    const distance = (heroMid - viewportMid) / viewportMid;
+    const progress = clamp(distance, -1, 1);
+
+    leftJersey.style.setProperty('--parallax-x', `${progress * -46}px`);
+    leftJersey.style.setProperty('--parallax-y', `${progress * 34}px`);
+    rightJersey.style.setProperty('--parallax-x', `${progress * 46}px`);
+    rightJersey.style.setProperty('--parallax-y', `${progress * 52}px`);
+
+  };
+
+  const requestUpdate = () => {
+    if (rafId) return;
+    rafId = window.requestAnimationFrame(updateParallax);
+  };
+
+  updateParallax();
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+};
+
+initHeroParallax();
 
 const bannerContenido = document.querySelector('.banner-contenido');
 if (bannerContenido) {
