@@ -500,29 +500,21 @@ h6 {
       transparent 2px,
       transparent 18px
     ),
-    repeating-linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.04) 0px,
-      rgba(255, 255, 255, 0.04) 1px,
-      transparent 1px,
-      transparent 46px
-    ),
     radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size:
     100% 100%,
     100% 100%,
     180px 180px,
-    100% 100%,
     22px 22px;
   background-position:
     center,
     center,
     center,
-    center,
     0 0;
-  background-blend-mode: screen, screen, normal, normal, normal;
+  background-blend-mode: screen, screen, normal, normal;
   text-align: center;
   position: relative;
+  z-index: 0;
   overflow: hidden;
 }
 
@@ -637,6 +629,7 @@ h6 {
     );
   }
 }
+
 
 .hero-subtitle {
   color: #888;
@@ -1174,6 +1167,7 @@ h6 {
     margin-bottom: 1.5rem;
     letter-spacing: -0.01em;
   }
+
 
   .hero-description {
     font-size: 0.95rem;
